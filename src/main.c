@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/cub3d.h"
 
 static void	null_test_success(void **state)
 {
