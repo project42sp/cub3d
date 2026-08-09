@@ -16,9 +16,9 @@ jobs:
           pip install norminette
           norminette $(find . -name "*.[ch]" | grep -v tests)
 
-    tests:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v6
-        - name: compile cub3D
-          run: make
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: compile cub3D
+        run: make
