@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  norminette:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: norminette
+        run: |
+          pip install norminette
+          norminette $(find . -name "*.[ch]" | grep -v tests)
+
+    tests:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v6
+        - name: compile cub3D
+          run: make
