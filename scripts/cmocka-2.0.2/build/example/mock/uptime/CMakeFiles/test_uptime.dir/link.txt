@@ -1,0 +1,1 @@
+/usr/bin/cc -fstack-protector-strong -Wl,--wrap=uptime -Wl,--dependency-file=CMakeFiles/test_uptime.dir/link.d CMakeFiles/test_uptime.dir/test_uptime.c.o -o test_uptime  -Wl,-rpath,/home/solractys/Downloads/cmocka-2.0.2/build/src ../../../src/libcmocka.so.1.0.2

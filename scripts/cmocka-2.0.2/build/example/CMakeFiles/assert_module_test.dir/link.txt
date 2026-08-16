@@ -1,0 +1,1 @@
+/usr/bin/cc -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/assert_module_test.dir/link.d CMakeFiles/assert_module_test.dir/assert_module.c.o CMakeFiles/assert_module_test.dir/assert_module_test.c.o -o assert_module_test  -Wl,-rpath,/home/solractys/Downloads/cmocka-2.0.2/build/src ../src/libcmocka.so.1.0.2

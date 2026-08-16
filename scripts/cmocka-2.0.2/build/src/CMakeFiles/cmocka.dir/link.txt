@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/cmocka.dir/link.d -shared -Wl,-soname,libcmocka.so.0 -o libcmocka.so.1.0.2 CMakeFiles/cmocka.dir/cmocka.c.o

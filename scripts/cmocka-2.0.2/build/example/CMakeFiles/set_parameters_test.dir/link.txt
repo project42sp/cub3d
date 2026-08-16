@@ -1,0 +1,1 @@
+/usr/bin/cc -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/set_parameters_test.dir/link.d CMakeFiles/set_parameters_test.dir/set_parameters.c.o -o set_parameters_test  -Wl,-rpath,/home/solractys/Downloads/cmocka-2.0.2/build/src ../src/libcmocka.so.1.0.2

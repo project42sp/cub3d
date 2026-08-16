@@ -1,0 +1,355 @@
+Start testing: Aug 15 22:59 -03
+----------------------------------------------------------
+1/11 Testing: calculator_test
+1/11 Test: calculator_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/calculator_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"calculator_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 22 test(s).
+[ RUN      ] test_add
+[       OK ] test_add
+[ RUN      ] test_subtract
+[       OK ] test_subtract
+[ RUN      ] test_multiply
+[       OK ] test_multiply
+[ RUN      ] test_divide
+[       OK ] test_divide
+[ RUN      ] test_divide_by_zero
+Expected assertion b occurred
+[       OK ] test_divide_by_zero
+[ RUN      ] test_find_operator_function_by_string_null_functions
+Expected assertion !number_of_operator_functions || operator_functions occurred
+[       OK ] test_find_operator_function_by_string_null_functions
+[ RUN      ] test_find_operator_function_by_string_null_string
+Expected assertion operator_string != NULL occurred
+[       OK ] test_find_operator_function_by_string_null_string
+[ RUN      ] test_find_operator_function_by_string_valid_null_functions
+[       OK ] test_find_operator_function_by_string_valid_null_functions
+[ RUN      ] test_find_operator_function_by_string_not_found
+[       OK ] test_find_operator_function_by_string_not_found
+[ RUN      ] test_find_operator_function_by_string_found
+[       OK ] test_find_operator_function_by_string_found
+[ RUN      ] test_perform_operation_null_args
+Expected assertion !number_of_arguments || arguments occurred
+[       OK ] test_perform_operation_null_args
+[ RUN      ] test_perform_operation_null_operator_functions
+Expected assertion !number_of_operator_functions || operator_functions occurred
+[       OK ] test_perform_operation_null_operator_functions
+[ RUN      ] test_perform_operation_null_number_of_intermediate_values
+Expected assertion number_of_intermediate_values != NULL occurred
+[       OK ] test_perform_operation_null_number_of_intermediate_values
+[ RUN      ] test_perform_operation_null_intermediate_values
+Expected assertion intermediate_values != NULL occurred
+[       OK ] test_perform_operation_null_intermediate_values
+[ RUN      ] test_perform_operation_no_arguments
+[       OK ] test_perform_operation_no_arguments
+[ RUN      ] test_perform_operation_first_arg_not_integer
+[       OK ] test_perform_operation_first_arg_not_integer
+[ RUN      ] test_perform_operation_unknown_operator
+[       OK ] test_perform_operation_unknown_operator
+[ RUN      ] test_perform_operation_missing_argument
+[       OK ] test_perform_operation_missing_argument
+[ RUN      ] test_perform_operation_no_integer_after_operator
+[       OK ] test_perform_operation_no_integer_after_operator
+[ RUN      ] test_perform_operation
+[       OK ] test_perform_operation
+[ RUN      ] test_example_main_no_args
+[       OK ] test_example_main_no_args
+[ RUN      ] test_example_main
+[       OK ] test_example_main
+[==========] tests: 22 test(s) run.
+[  PASSED  ] 22 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"calculator_test" end time: Aug 15 22:59 -03
+"calculator_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/11 Testing: simple_test
+2/11 Test: simple_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/simple_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"simple_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 1 test(s).
+[ RUN      ] null_test_success
+[       OK ] null_test_success
+[==========] tests: 1 test(s) run.
+[  PASSED  ] 1 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"simple_test" end time: Aug 15 22:59 -03
+"simple_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/11 Testing: assert_macro_test
+3/11 Test: assert_macro_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/assert_macro_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"assert_macro_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 4 test(s).
+[ RUN      ] test_player_init
+[       OK ] test_player_init
+[ RUN      ] test_player_scoring
+[  ERROR   ] --- 3 (0x3) != 4 (0x4)
+[   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/assert_macro_test.c:92: error: Failure!
+[  FAILED  ] test_player_scoring
+[ RUN      ] test_player_copy
+[  ERROR   ] --- Memory is not equal:
+
+- [00000000] e7 03 00 00 03 4f 72 69   67 69 6e 61 6c 50 6c 61   .....Ori ginalPla
++ [00000000] 2c 01 00 00 03 4f 72 69   67 69 6e 61 6c 50 6c 61   ,....Ori ginalPla
+  [00000010] 79 65 72 00 00 00 00 00   00 00 00 00 00 00 00 00   yer..... ........
+  [00000020] 00 00 00 00 00 00 00 00                             ........
+
+[   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/assert_macro_test.c:125: error: Failure!
+[  FAILED  ] test_player_copy
+[ RUN      ] test_player_username
+[  ERROR   ] --- "NinjaWarrior" != "NinjaWorrior"
+[   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/assert_macro_test.c:147: error: Failure!
+[  FAILED  ] test_player_username
+[==========] tests: 4 test(s) run.
+[  PASSED  ] 1 test(s).
+[  FAILED  ] tests: 3 test(s), listed below:
+[  FAILED  ] test_player_scoring
+[  FAILED  ] test_player_copy
+[  FAILED  ] test_player_username
+
+ 3 FAILED TEST(S)
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"assert_macro_test" end time: Aug 15 22:59 -03
+"assert_macro_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/11 Testing: assert_module_test
+4/11 Test: assert_module_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/assert_module_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"assert_module_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 3 test(s).
+[ RUN      ] increment_value_fail
+[  ERROR   ] --- ASSERT: value
+[   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/assert_module.c:67: error: Failure!
+[  FAILED  ] increment_value_fail
+[ RUN      ] increment_value_assert
+Expected assertion value occurred
+[       OK ] increment_value_assert
+[ RUN      ] decrement_value_fail
+Expected assert in decrement_value(NULL)
+[  ERROR   ] --- [   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/assert_module_test.c:108: error: Failure!
+[  FAILED  ] decrement_value_fail
+[==========] tests: 3 test(s) run.
+[  PASSED  ] 1 test(s).
+[  FAILED  ] tests: 2 test(s), listed below:
+[  FAILED  ] increment_value_fail
+[  FAILED  ] decrement_value_fail
+
+ 2 FAILED TEST(S)
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"assert_module_test" end time: Aug 15 22:59 -03
+"assert_module_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/11 Testing: set_parameters_test
+5/11 Test: set_parameters_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/set_parameters_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"set_parameters_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 2 test(s).
+[ RUN      ] test_named_return_parameter
+[       OK ] test_named_return_parameter
+[ RUN      ] test_internal_named_mocks
+[       OK ] test_internal_named_mocks
+[==========] tests: 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"set_parameters_test" end time: Aug 15 22:59 -03
+"set_parameters_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/11 Testing: set_errno_tests
+6/11 Test: set_errno_tests
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/set_errno_tests"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"set_errno_tests" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 2 test(s).
+[ RUN      ] test_singe_run_sets_errno
+[       OK ] test_singe_run_sets_errno
+[ RUN      ] test_multiple_runs_sets_errno
+[       OK ] test_multiple_runs_sets_errno
+[==========] tests: 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"set_errno_tests" end time: Aug 15 22:59 -03
+"set_errno_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/11 Testing: output_override_test
+7/11 Test: output_override_test
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/output_override_test"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"output_override_test" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+---- UNIT TEST OUTPUT ----
+[==========] tests: Running 4 test(s).
+[ RUN      ] true_test_succeeds
+[       OK ] true_test_succeeds
+[ RUN      ] true_test_generated_output
+[       OK ] true_test_generated_output
+[ RUN      ] false_test_fails
+[  ERROR   ] --- false is not true
+[   LINE   ] --- /home/solractys/Downloads/cmocka-2.0.2/example/output_override_test.c:50: error: Failure!
+[  FAILED  ] false_test_fails
+[ RUN      ] false_test_generated_output
+[       OK ] false_test_generated_output
+[==========] tests: 4 test(s) run.
+[  PASSED  ] 3 test(s).
+[  FAILED  ] tests: 1 test(s), listed below:
+[  FAILED  ] false_test_fails
+
+ 1 FAILED TEST(S)
+
+---- UNIT TEST OUTPUT ----
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Pass Reason:
+Required regular expression not found. Regex=[---- UNIT TEST OUTPUT ----[==========] tests: Running 4 test(s).[ RUN      ] true_test_succeeds.*[==========] tests: 4 test(s) run.[  PASSED  ] 3 test(s).[  FAILED  ] tests: 1 test(s), listed below:[  FAILED  ] false_test_fails 1 FAILED TEST(S)---- UNIT TEST OUTPUT ----
+]
+"output_override_test" end time: Aug 15 22:59 -03
+"output_override_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/11 Testing: expect_check_data_example
+8/11 Test: expect_check_data_example
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/expect_check_data_example"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"expect_check_data_example" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 4 test(s).
+[ RUN      ] test_multiple_requests_with_defaults
+[       OK ] test_multiple_requests_with_defaults
+[ RUN      ] test_priority_range
+[       OK ] test_priority_range
+[ RUN      ] test_user_whitelist
+[       OK ] test_user_whitelist
+[ RUN      ] test_dynamic_returns
+[       OK ] test_dynamic_returns
+[==========] tests: 4 test(s) run.
+[  PASSED  ] 4 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"expect_check_data_example" end time: Aug 15 22:59 -03
+"expect_check_data_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/11 Testing: expect_check_data_advanced
+9/11 Test: expect_check_data_advanced
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/expect_check_data_advanced"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example
+"expect_check_data_advanced" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 5 test(s).
+[ RUN      ] test_rectangle_drawing
+[       OK ] test_rectangle_drawing
+[ RUN      ] test_priority_sequence
+[       OK ] test_priority_sequence
+[ RUN      ] test_server_config
+[       OK ] test_server_config
+[ RUN      ] test_temperature_range
+[       OK ] test_temperature_range
+[ RUN      ] test_command_validation
+[       OK ] test_command_validation
+[==========] tests: 5 test(s) run.
+[  PASSED  ] 5 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"expect_check_data_advanced" end time: Aug 15 22:59 -03
+"expect_check_data_advanced" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/11 Testing: waiter_test_wrap
+10/11 Test: waiter_test_wrap
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/mock/chef_wrap/waiter_test_wrap"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example/mock/chef_wrap
+"waiter_test_wrap" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 2 test(s).
+[ RUN      ] test_order_hotdog
+[       OK ] test_order_hotdog
+[ RUN      ] test_bad_dish
+[       OK ] test_bad_dish
+[==========] tests: 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"waiter_test_wrap" end time: Aug 15 22:59 -03
+"waiter_test_wrap" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/11 Testing: test_uptime
+11/11 Test: test_uptime
+Command: "/home/solractys/Downloads/cmocka-2.0.2/build/example/mock/uptime/test_uptime"
+Directory: /home/solractys/Downloads/cmocka-2.0.2/build/example/mock/uptime
+"test_uptime" start time: Aug 15 22:59 -03
+Output:
+----------------------------------------------------------
+[==========] tests: Running 5 test(s).
+[ RUN      ] test_calc_uptime_minutes
+[       OK ] test_calc_uptime_minutes
+[ RUN      ] test_calc_uptime_hour_minute
+[       OK ] test_calc_uptime_hour_minute
+[ RUN      ] test_calc_uptime_days_minutes
+[       OK ] test_calc_uptime_days_minutes
+[ RUN      ] test_calc_uptime_days_hours_minutes
+[       OK ] test_calc_uptime_days_hours_minutes
+[ RUN      ] test_calc_uptime_null
+[       OK ] test_calc_uptime_null
+[==========] tests: 5 test(s) run.
+[  PASSED  ] 5 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_uptime" end time: Aug 15 22:59 -03
+"test_uptime" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Aug 15 22:59 -03

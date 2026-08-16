@@ -1,0 +1,1 @@
+/usr/bin/cc -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/output_override_test.dir/link.d CMakeFiles/output_override_test.dir/output_override_test.c.o -o output_override_test  -Wl,-rpath,/home/solractys/Downloads/cmocka-2.0.2/build/src ../src/libcmocka.so.1.0.2

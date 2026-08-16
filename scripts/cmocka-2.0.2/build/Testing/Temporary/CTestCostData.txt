@@ -1,0 +1,12 @@
+calculator_test 2 0.00156682
+simple_test 2 0.000845917
+assert_macro_test 2 0.000803733
+assert_module_test 2 0.000676547
+set_parameters_test 2 0.000625216
+set_errno_tests 2 0.000741761
+output_override_test 2 0.000678501
+expect_check_data_example 2 0.000757977
+expect_check_data_advanced 2 0.000645651
+waiter_test_wrap 2 0.00072105
+test_uptime 2 0.00075632
+---
