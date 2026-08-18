@@ -1,11 +1,11 @@
 # VARS
 NAME	= cub3d
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g3 
-
-SRC_FILES	= main.c
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 SRC_DIR = src
+
+SRC_FILES	= main.c
 
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

@@ -19,4 +19,7 @@
 # include <stdint.h>
 # include <setjmp.h>
 # include <cmocka.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 #endif
