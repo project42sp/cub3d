@@ -1,1 +1,0 @@
-/usr/bin/cc -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/calculator.dir/link.d CMakeFiles/calculator.dir/calculator.c.o -o calculator

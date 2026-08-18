@@ -1,1 +1,0 @@
-/usr/bin/cc -fstack-protector-strong -Wl,--dependency-file=CMakeFiles/calculator_test.dir/link.d CMakeFiles/calculator_test.dir/calculator.c.o CMakeFiles/calculator_test.dir/calculator_test.c.o -o calculator_test  -Wl,-rpath,/home/solractys/Downloads/cmocka-2.0.2/build/src ../src/libcmocka.so.1.0.2
