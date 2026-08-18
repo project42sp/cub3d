@@ -25,6 +25,8 @@ jobs:
           sudo apt install cmake wget
           chmod +x ./scripts/cmocka_install.sh
           sudo ./scripts/cmocka_install.sh
+          sudo ldconfig
+          sudo apt install libcmocka0
           make unit-tests
 
   tests:
