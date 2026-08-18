@@ -9,4 +9,4 @@ cmake --build build
 cmake --build build --target test
 sleep 3
 cmake --install build
-cd ../ && rm -rf cmocka-2.0.2/
+cd ../ && rm -rf cmocka-2.0.2/ && cd ../
