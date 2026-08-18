@@ -24,15 +24,19 @@ $(OBJS_DIR)/%.o : %.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+unit-test:
+	cc -Wall -Wextra -Werror ./src/test/cmocka.spec.c -lcmocka -o test-report
+	./test-report
 
 # CLEAN
 
 clean:
 	rm -fr $(OBJS_DIR)
+	rm -rf test-report
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re unit-test
