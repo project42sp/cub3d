@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 22:02:22 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/08/17 22:57:39 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 00:13:48 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void  check_null_cases(void **states)
 {
         (void)states;
         int n = 2;
-        assert_true(n);
+        assert_false(n);
 }
 int main(void)
 {
