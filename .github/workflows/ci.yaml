@@ -20,11 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: unit-tests
+      - name: run unit tests
         run: |
           apt install cmake wget
           chmod +x ./scripts/cmocka_install.sh
           ./scripts/cmocka_install.sh
+          make unit-tests
 
   tests:
     runs-on: ubuntu-latest
