@@ -25,7 +25,7 @@ $(OBJS_DIR)/%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 unit-tests:
-	$(CC) $(CFLAGS) ./src/test/cmocka.spec.c -lcmocka -o test-report
+	$(CC) $(CFLAGS) ./src/tests/cmocka.spec.c -lcmocka -o test-report
 	./test-report
 
 # CLEAN
