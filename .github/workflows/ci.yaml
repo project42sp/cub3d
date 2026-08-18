@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt install cmake wget
           chmod +x ./scripts/cmocka_install.sh
-          ./scripts/cmocka_install.sh
+          sudo ./scripts/cmocka_install.sh
           make unit-tests
 
   tests:
