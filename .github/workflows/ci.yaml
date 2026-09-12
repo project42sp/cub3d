@@ -16,6 +16,19 @@ jobs:
           pip install norminette
           norminette $(find . -name "*.[ch]" | grep -v tests)
 
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: run unit tests
+        run: |
+          sudo apt install cmake wget
+          chmod +x ./scripts/cmocka_install.sh
+          sudo ./scripts/cmocka_install.sh
+          sudo ldconfig
+          sudo apt install libcmocka0
+          make unit-tests
+
   tests:
     runs-on: ubuntu-latest
     steps:
