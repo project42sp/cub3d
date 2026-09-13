@@ -12,26 +12,12 @@
 
 # include "../includes/cub3d.h"
 
-typedef enum e_colortype
+int	name_check(char *filename)
 {
-	FLOOR,
-	CEIL,
-	NO,
-	SO,
-	WE,
-	EA
-}	t_colortype;
 
-typedef struct s_color
+}
+
+t_scene	*parser(char *argv)
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
 
-typedef struct s_map
-{
-	t_color	floor;
-	t_color	ceil;
-
-}	t_map;
+}

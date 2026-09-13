@@ -21,4 +21,36 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "libft/includes/libft.h"
+
+// Parser MAP structs
+typedef enum e_colortype
+{
+	FLOOR,
+	CEIL,
+	NO,
+	SO,
+	WE,
+	EA
+}	t_colortype;
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
+typedef struct s_scene
+{
+	void	*map;
+	t_color	floor;
+	t_color	ceil;
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+
+}	t_scene;
+
 #endif
