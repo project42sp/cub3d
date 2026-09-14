@@ -24,7 +24,7 @@
 # include "libft/includes/libft.h"
 
 // Parser MAP structs
-typedef enum e_colortype
+enum e_colortype
 {
 	FLOOR,
 	CEIL,
@@ -32,7 +32,7 @@ typedef enum e_colortype
 	SO,
 	WE,
 	EA
-}	t_colortype;
+};
 
 typedef struct s_color
 {
@@ -43,14 +43,16 @@ typedef struct s_color
 
 typedef struct s_scene
 {
-	void	*map;
+	char	**map;
 	t_color	floor;
 	t_color	ceil;
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		coord[2];
+	char	direction;
 }	t_scene;
 
+t_scene	*parser(char *argv);
 #endif
