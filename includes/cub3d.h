@@ -41,18 +41,27 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_coord;
+
 typedef struct s_scene
 {
 	char	**map;
 	t_color	floor;
 	t_color	ceil;
+	t_coord	player;
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		coord[2];
 	char	direction;
 }	t_scene;
 
+// Parser functions
 t_scene	*parser(char *argv);
+int		invalid_name(char *filename);
 #endif
