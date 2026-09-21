@@ -75,7 +75,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -fr $(TEST_OBJ_DIR)
 	$(MAKE) -sC $(LIBFT_DIR) $@
 
 re: fclean all
