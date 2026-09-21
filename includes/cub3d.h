@@ -13,11 +13,14 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// CMOCKA LIBS
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <setjmp.h>
+
+// INTERNAL LIBS
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -64,4 +67,5 @@ typedef struct s_scene
 // Parser functions
 t_scene	*parser(char *argv);
 int		invalid_name(char *filename);
+
 #endif
