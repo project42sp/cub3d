@@ -12,7 +12,7 @@
 
 # include "../includes/cub3d.h"
 
-static int	invalid_name(char *filename)
+int	invalid_name(char *filename)
 {
 	int		index;
 	char	**name_parts;
@@ -38,6 +38,6 @@ t_scene	*parser(char *argv)
 		ft_printf("%s\n", &"Error");
 		return (NULL);
 	}
-	write(1, &"TEST", 4);
+	ft_printf("I'm here!");
 	return (NULL);
 }
