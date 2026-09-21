@@ -15,16 +15,21 @@ OBJS_DIR	= obj
 
 OBJS	= $(addprefix $(OBJS_DIR)/, $(SRC_FILES:.c=.o))
 
+MLX = mlx/libmlx_linux.a
+
 # RECIPES
 
-all : $(NAME)
+all : $(MLX) $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) -Imlx -Lmlx -lXext -lX11 -lm -lz $(OBJS) -o $@
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(MLX):
+	@make -C mlx
 
 unit-tests:
 	$(CC) $(CFLAGS) ./src/tests/cmocka.spec.c -lcmocka -o test-report
