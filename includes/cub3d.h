@@ -13,12 +13,59 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// CMOCKA LIBS
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <setjmp.h>
+
+// INTERNAL LIBS
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "libft/includes/libft.h"
+
+// Parser MAP structs
+enum e_colortype
+{
+	FLOOR,
+	CEIL,
+	NO,
+	SO,
+	WE,
+	EA
+};
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_coord;
+
+typedef struct s_scene
+{
+	char	**map;
+	t_color	floor;
+	t_color	ceil;
+	t_coord	player;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	direction;
+}	t_scene;
+
+// Parser functions
+t_scene	*parser(char *argv);
+int		invalid_name(char *filename);
+
 #endif

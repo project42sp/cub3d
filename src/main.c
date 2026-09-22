@@ -12,8 +12,14 @@
 
 #include "../includes/cub3d.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	write (1, "Windows 98 Screensaver\n", 23);
-	return (0);
+	t_scene	*scene;
+
+	if (argc != 2)
+		return (1);
+	scene = parser(argv[1]);
+	if (!scene)
+		return (FAILED);
+	return (FAILED);
 }
