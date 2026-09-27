@@ -31,10 +31,6 @@ $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 $(MLX):
 	@make -C minilibx
 
-# unit-tests:
-# 	$(CC) $(CFLAGS) ./src/tests/cmocka.spec.c -lcmocka -o test-report
-# 	./test-report
-
 # -------------- LIBFT ----------------
 
 $(LIBFT):
