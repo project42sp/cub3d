@@ -22,7 +22,7 @@ MLX = mlx/libmlx_linux.a
 all : $(MLX) $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -Imlx -Lmlx -lXext -lX11 -lm -lz $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@ -Imlx -Lmlx -lXext -lX11 -lm -lz
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
