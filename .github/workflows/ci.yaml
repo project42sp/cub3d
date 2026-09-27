@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
       - name: run unit tests
         run: |
           sudo apt install cmake wget
@@ -33,5 +36,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+          build-essential \
+          libx11-dev \
+          libxext-dev \
+          libxrandr-dev \
+          libbsd-dev \
+          zlib1g-dev
       - name: compile cub3D
         run: make

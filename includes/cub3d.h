@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/09/18 21:20:39 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/09/27 16:59:58 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # include "libft/includes/libft.h"
 # include <setjmp.h>
+// CMOCKA LIBS
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
-# include <stdio.h>
-# include <stdlib.h>
+
+// INTERNAL LIBS
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include "../minilibx/mlx.h"
+# include "libft/includes/libft.h"
 
 // Parser MAP structs
 enum		e_colortype
@@ -41,18 +46,28 @@ typedef struct s_color
 	int		b;
 }			t_color;
 
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_coord;
+
 typedef struct s_scene
 {
 	char	**map;
 	t_color	floor;
 	t_color	ceil;
+	t_coord	player;
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		coord[2];
 	char	direction;
 }			t_scene;
 
-t_scene		*parser(char *argv);
+// Parser functions
+t_scene	*parser(char *argv);
+int		invalid_name(char *filename);
+
 #endif
