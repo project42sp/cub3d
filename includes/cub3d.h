@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/08/18 00:31:52 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/09/27 16:05:28 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
 
 // Parser MAP structs

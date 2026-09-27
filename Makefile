@@ -15,22 +15,28 @@ SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS_DIR	= obj
 OBJS	= $(addprefix $(OBJS_DIR)/, $(SRC_FILES:.c=.o))
 
+MLX_DIR = minilibx
+MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
-all : $(NAME)
+$(MLX):
+	@make -C minilibx
+
+all : $(MLX) $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+
 # -------------- LIBFT ----------------
+
 $(LIBFT):
 	@$(MAKE) -sC $(LIBFT_DIR) all --no-print-directory
-
 
 # -------------- TESTS ----------------
 # ---- Variables -----
