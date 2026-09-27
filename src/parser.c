@@ -10,28 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-typedef enum e_colortype
+int	invalid_name(char *filename)
 {
-	FLOOR,
-	CEIL,
-	NO,
-	SO,
-	WE,
-	EA
-}	t_colortype;
+	int		index;
+	char	**name_parts;
+	int		err;
 
-typedef struct s_color
+	name_parts = ft_split(filename, '.');
+	if (!name_parts)
+		return (FAILED);
+	index = 0;
+	while (name_parts[index + 1] != NULL)
+		index++;
+	err = SUCESS;
+	if (ft_strncmp(name_parts[index], "cub", 4))
+		err = FAILED;
+	ft_split_free(name_parts, index);
+	return (err);
+}
+
+t_scene	*parser(char *argv)
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
-
-typedef struct s_map
-{
-	t_color	floor;
-	t_color	ceil;
-
-}	t_map;
+	if (invalid_name(argv))
+	{
+		ft_printf("%s\n", &"Error");
+		return (NULL);
+	}
+	ft_printf("I'm here!");
+	return (NULL);
+}
