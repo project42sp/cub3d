@@ -15,21 +15,21 @@ OBJS_DIR	= obj
 
 OBJS	= $(addprefix $(OBJS_DIR)/, $(SRC_FILES:.c=.o))
 
-MLX = mlx/libmlx_linux.a
+MLX = minilibx/libmlx.a
 
 # RECIPES
 
 all : $(MLX) $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ -Imlx -Lmlx -lXext -lX11 -lm -lz
+	$(CC) $(CFLAGS) $(OBJS) -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(MLX):
-	@make -C mlx
+	@make -C minilibx
 
 unit-tests:
 	$(CC) $(CFLAGS) ./src/tests/cmocka.spec.c -lcmocka -o test-report

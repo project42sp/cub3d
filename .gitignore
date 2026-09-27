@@ -1,0 +1,6 @@
+cub3d
+obj/
+*.o
+src/tests
+minilibx
+
