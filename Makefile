@@ -15,7 +15,8 @@ SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS_DIR	= obj
 OBJS	= $(addprefix $(OBJS_DIR)/, $(SRC_FILES:.c=.o))
 
-MLX = minilibx/libmlx.a
+MLX_DIR = minilibx
+MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
