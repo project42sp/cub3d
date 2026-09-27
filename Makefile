@@ -19,6 +19,9 @@ MLX = minilibx/libmlx.a
 
 # ------------ RECIPES ---------------
 
+$(MLX):
+	@make -C minilibx
+
 all : $(MLX) $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
@@ -28,8 +31,6 @@ $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(MLX):
-	@make -C minilibx
 
 # -------------- LIBFT ----------------
 
