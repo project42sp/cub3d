@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/09/21 00:12:15 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/09/27 15:58:52 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	void *mlx;
+	void	*mlx;
 
 	write (1, "Windows 98 Screensaver\n", 23);
 	mlx = mlx_init();
