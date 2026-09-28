@@ -2,12 +2,13 @@
 NAME	= cub3d
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g3 -std=c11
 LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_FILES	=	main.c	\
-				parser.c
+						mock_map.c \
+						parser.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
