@@ -2,7 +2,7 @@
 NAME	= cub3d
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g3 -std=c99
 LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -20,16 +20,16 @@ MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
+all : $(MLX) $(NAME)
+
 $(MLX):
 	@make -C minilibx
-
-all : $(MLX) $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
-	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
