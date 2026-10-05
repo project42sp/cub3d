@@ -24,6 +24,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <errno.h>
+# include <fcntl.h>
 # include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
 
@@ -47,9 +49,9 @@ typedef struct s_color
 
 typedef struct s_coord
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_coord;
 
 typedef struct s_scene
