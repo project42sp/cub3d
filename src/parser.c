@@ -100,15 +100,12 @@ char	**parsing_map(char *line, int fd)
 	int		map_size;
 	int		index;
 	char	**map;
-	char	**temp_map;
 
 	map_size = 1;
 	index = 0;
 	map = NULL;
 	while (ismap(line))
 	{
-		if (map)
-			ft_realloc();
 		map_size++;
 		map = ft_calloc(map_size, sizeof(char *));
 		if (!map_size)
@@ -119,6 +116,7 @@ char	**parsing_map(char *line, int fd)
 		map[index] = line;
 		line = get_next_line(fd);
 	}
+	return (NULL);
 }
 
 t_scene	*parse_data(int	fd)
@@ -140,7 +138,7 @@ t_scene	*parse_data(int	fd)
 			if (!parsed_map && ismap(line))
 			{
 				parsed_map = TRUE;
-				data->map = parsing_map(line, fd);
+				//data->map = parsing_map(line, fd);
 			}
 		}
 		free(line);
@@ -167,14 +165,76 @@ t_scene	*get_data(char *argv)
 	return (map);
 }
 
+struct s_map_size
+{
+	int	line_start;
+	int	map_size;
+};
+//int size: [0] = map start line
+// 			[1] = map size
+int	check_map_size(char *argv)
+{
+	int		fd;
+	int		index;
+	char	*line;
+	struct s_map_size	len;
+
+	fd = get_file(argv);
+	if (fd <= 0)
+		return (FAILED);
+	index = 0;
+	len.line_start = 1;
+	len.map_size = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		while (ft_isspace(line[index]))
+			index++;
+		if (!len.map_size && ft_isdigit(line[index]))
+		{
+			while (line)
+			{
+				while (ft_isspace(line[index]))
+					index++;
+				if (ft_isdigit(line[index]))
+					len.map_size++;
+				else
+					break ;
+				free(line);
+				index = 0;
+				line = get_next_line(fd);
+			}
+		}
+		else if (len.map_size && ft_isdigit(line[index]))
+		{
+			printf("Error: Invalid Input File Map Format.\n");
+			printf("Error line %d: %s", len.line_start, line);
+			printf("Error character: %c\n", line[index]);
+			free(line);
+			close(fd);
+			return (FAILED);
+		}
+		else
+			len.line_start++;
+		free(line);
+		index = 0;
+		line = get_next_line(fd);
+	}
+	printf("Cub3D: Map Checked. \nStart Line: %d\nMap Line Size: %d", len.line_start, len.map_size);
+	close(fd);
+	return (SUCESS);
+}
+
 t_scene	*parser(char *argv)
 {
-	t_scene	*map;
+	//t_scene	*map;
 
 	if (invalid_name(argv))
 		return (NULL);
-	map = get_data(argv);
-	if (!map)
+	if (!check_map_size(argv))
 		return (NULL);
+	//map = get_data(argv);
+	//if (!map)
+		//return (NULL);
 	return (NULL);
 }
