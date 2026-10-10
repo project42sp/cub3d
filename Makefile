@@ -20,10 +20,10 @@ MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
+all : $(MLX) $(NAME)
+
 $(MLX):
 	@make -C minilibx
-
-all : $(MLX) $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
