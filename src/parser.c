@@ -165,19 +165,12 @@ t_scene	*get_data(char *argv)
 	return (map);
 }
 
-struct s_map_size
-{
-	int	line_start;
-	int	map_size;
-};
-//int size: [0] = map start line
-// 			[1] = map size
 int	check_map_size(char *argv)
 {
 	int		fd;
 	int		index;
 	char	*line;
-	struct s_map_size	len;
+	t_map_size	len;
 
 	fd = get_file(argv);
 	if (fd <= 0)

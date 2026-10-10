@@ -40,6 +40,12 @@ enum e_colortype
 	EA
 };
 
+typedef struct s_map_size
+{
+	int	line_start;
+	int	map_size;
+} t_map_size;
+
 typedef struct s_color
 {
 	int	r;
