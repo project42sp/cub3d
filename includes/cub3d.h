@@ -44,6 +44,8 @@ typedef struct s_map_size
 {
 	int	line_start;
 	int	map_size;
+	int	control;
+	int	index;
 } t_map_size;
 
 typedef struct s_color
