@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_invalid_name.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/12 01:21:59 by buehara           #+#    #+#             */
+/*   Updated: 2026/10/12 01:22:06 by buehara          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 int	invalid_name(char *filename)
 {
@@ -18,6 +31,6 @@ int	invalid_name(char *filename)
 	if (err)
 		printf("%s\n", "Error: Unexpected file format.");
 	else
-		printf("%s\n", "Cub3D: File Accepted.");
+		printf("%s\n", "Cub3D: File format Accepted.");
 	return (err);
 }

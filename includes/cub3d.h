@@ -76,7 +76,14 @@ typedef struct s_scene
 }	t_scene;
 
 // Parser functions
-t_scene	*parser(char *argv);
-int		invalid_name(char *filename);
+t_scene		*parser(char *argv);
+
+int			invalid_name(char *filename);
+
+t_map_size	check_map_size(int fd);
+void		map_error(t_map_size len, char *line, int fd);
+char		*count_map_size(t_map_size *len, int fd, char *line);
+int			ignore_space(char *line, int index);
+t_map_size	init_map_size(void);
 
 #endif

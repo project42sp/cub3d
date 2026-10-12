@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_map_size_check.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/12 01:22:19 by buehara           #+#    #+#             */
+/*   Updated: 2026/10/12 01:22:21 by buehara          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 t_map_size init_map_size(void)
 {
@@ -21,14 +34,17 @@ int	ignore_space(char *line, int index)
 
 char	*count_map_size(t_map_size *len, int fd, char *line)
 {
-	len->index = ignore_space(line, len->index);
-	if (!ft_isdigit(line[len->index]))
-		return (NULL);
-	len->map_size++;
-	len->index = 0;
-	len->control++;
-	free(line);
-	line = get_next_line(fd);
+	while (line)
+	{
+		len->index = ignore_space(line, len->index);
+		if (!ft_isdigit(line[len->index]))
+			break ;
+		len->map_size++;
+		len->index = 0;
+		len->control++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	return (line);
 }
 
@@ -53,8 +69,7 @@ t_map_size	check_map_size(int fd)
 		len.index = ignore_space(line, len.index);
 		if (!len.map_size && ft_isdigit(line[len.index]))
 		{
-			while (line)
-				line = count_map_size(&len, fd, line);
+			line = count_map_size(&len, fd, line);
 		}
 		else if (len.map_size && ft_isdigit(line[len.index]))
 		{

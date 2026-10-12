@@ -7,7 +7,9 @@ LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_FILES	=	main.c	\
-				parser.c
+				parser.c	\
+				parser_invalid_name.c	\
+				parser_map_size_check.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
