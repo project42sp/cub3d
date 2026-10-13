@@ -8,6 +8,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_FILES	=	main.c	\
 				parser.c	\
+				parser_utils.c	\
 				parser_invalid_name.c	\
 				parser_map_size_check.c
 
@@ -73,6 +74,9 @@ unit-tests: $(TEST_BINS)
 		./$$t || fail=1;		\
 	done;						\
 	exit $$fail
+
+normi:
+	@norminette $$(find . -name "*.[ch]" | grep -v tests | grep -v minilibx)
 
 # -------------- CLEAN ----------------
 
