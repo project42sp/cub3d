@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/09/27 16:06:34 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/12 17:32:45 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
 	t_scene	*scene;
 
 	if (argc != 2)
@@ -25,9 +24,11 @@ int	main(int argc, char **argv)
 		printf("Cub3D: Finishing program.\n\n");
 		return (FAILED);
 	}
-	write (1, "Windows 98 Screensaver\n", 23);
-	mlx = mlx_init();
-	mlx_new_window(mlx, 1024, 516, "Cub3d");
-	mlx_loop(mlx);
+	scene = ft_calloc(1, sizeof(t_scene));
+	scene->mlx_instance = mlx_init();
+	scene->win = mlx_new_window(scene->mlx_instance, 1280, 720,
+			"Windows 98 Screensaver\n");
+	key_handler(scene);
+	mlx_loop(scene->mlx_instance);
 	return (0);
 }

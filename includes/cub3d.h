@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/09/27 16:05:28 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/12 17:25:30 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 # include <fcntl.h>
 # include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
+
+// KEYCODES
+# define K_ESC 65307
+# define K_W 119
+# define K_D 100
+# define K_S 115
+# define K_A 97
 
 // Parser MAP structs
 enum e_colortype
@@ -62,6 +69,15 @@ typedef struct s_coord
 	double	z;
 }	t_coord;
 
+typedef struct s_input
+{
+	int	w;
+	int	s;
+	int	d;
+	int	a;
+	int	esc;
+}	t_input;
+
 typedef struct s_scene
 {
 	char	**map;
@@ -73,6 +89,9 @@ typedef struct s_scene
 	char	*we;
 	char	*ea;
 	char	direction;
+	void	*win;
+	void	*mlx_instance;
+	t_input	inputs;
 }	t_scene;
 
 // Parser functions
@@ -94,5 +113,18 @@ int			ignore_space(char *line, int index);
 int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
+
+t_scene	*parser(char *argv);
+int		invalid_name(char *filename);
+
+// Input Module Functions
+void	key_handler(t_scene *scene);
+int		key_press(int keycode, t_scene *scene);
+int		key_release(int keycode, t_scene *scene);
+int		key_action(t_scene *scene);
+void	print_inputs(t_input inputs);
+
+// Game Module Functions
+int		exit_scene(t_scene *scene);
 
 #endif
