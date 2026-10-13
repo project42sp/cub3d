@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-t_map_size init_map_size(void)
+t_map_size	init_map_size(void)
 {
 	t_map_size	len;
 
@@ -50,7 +50,7 @@ void	map_error(t_map_size len, char *line, int fd)
 
 t_map_size	check_map_size(int fd)
 {
-	char	*line;
+	char		*line;
 	t_map_size	len;
 
 	len = init_map_size();

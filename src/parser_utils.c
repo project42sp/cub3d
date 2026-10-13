@@ -15,7 +15,7 @@
 int	ignore_space(char *line, int index)
 {
 	if (!line)
-		return index;
+		return (index);
 	while (ft_isspace(line[index]))
 		index++;
 	return (index);
@@ -28,7 +28,7 @@ int	empty_line(char *line)
 	if (!line)
 		return (TRUE);
 	index = 0;
-	while(ft_isspace(line[index]))
+	while (ft_isspace(line[index]))
 		index++;
 	if (line[index] == '\n' || line[index] == '\0')
 	{

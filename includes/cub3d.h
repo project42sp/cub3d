@@ -53,7 +53,7 @@ typedef struct s_map_size
 	int	map_size;
 	int	control;
 	int	index;
-} t_map_size;
+}	t_map_size;
 
 typedef struct s_color
 {
@@ -114,17 +114,17 @@ int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
 
-t_scene	*parser(char *argv);
-int		invalid_name(char *filename);
+t_scene		*parser(char *argv);
+int			invalid_name(char *filename);
 
 // Input Module Functions
-void	key_handler(t_scene *scene);
-int		key_press(int keycode, t_scene *scene);
-int		key_release(int keycode, t_scene *scene);
-int		key_action(t_scene *scene);
-void	print_inputs(t_input inputs);
+void		key_handler(t_scene *scene);
+int			key_press(int keycode, t_scene *scene);
+int			key_release(int keycode, t_scene *scene);
+int			key_action(t_scene *scene);
+void		print_inputs(t_input inputs);
 
 // Game Module Functions
-int		exit_scene(t_scene *scene);
+int			exit_scene(t_scene *scene);
 
 #endif

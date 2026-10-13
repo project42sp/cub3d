@@ -36,7 +36,7 @@ char	**parsing_map(char *line, int fd)
 	return (NULL);
 }
 
-t_scene	*parse_data(int	fd)
+t_scene	*parse_data(int fd)
 {
 	int		parsed_map;
 	char	*line;
@@ -47,15 +47,14 @@ t_scene	*parse_data(int	fd)
 		return (NULL);
 	printf("Cub3D: Start Parsing file...\n");
 	parsed_map = FALSE;
-	line =  get_next_line(fd);
-	while(line)
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (!empty_line(line))
 		{
 			if (!parsed_map && ismap(line))
 			{
 				parsed_map = TRUE;
-				//data->map = parsing_map(line, fd);
 			}
 		}
 		free(line);
@@ -84,7 +83,6 @@ t_scene	*get_data(char *argv)
 
 t_scene	*parser(char *argv)
 {
-	//t_scene	*map;
 	t_map_size	len_map;
 	int			fd;
 
@@ -99,8 +97,5 @@ t_scene	*parser(char *argv)
 		printf("Cub3D: Error: Return to Main.\n");
 		return (NULL);
 	}
-	//map = get_data(argv);
-	//if (!map)
-		//return (NULL);
 	return (NULL);
 }

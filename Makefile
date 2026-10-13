@@ -10,7 +10,7 @@ SRC_FILES	=	main.c	\
 				parser.c	\
 				parser_utils.c	\
 				parser_invalid_name.c	\
-				parser_map_size_check.c
+				parser_map_size_check.c		\
 				input_module/key_handler.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
