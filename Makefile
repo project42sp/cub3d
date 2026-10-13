@@ -2,12 +2,16 @@
 NAME	= cub3d
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g3 -std=c99
 LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_FILES	=	main.c	\
-				parser.c
+						parser.c	\
+						input_module/key_handler.c	\
+						input_module/key_register.c \
+						input_module/key_action.c		\
+						game_module/exit_game.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -20,16 +24,16 @@ MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
+all : $(MLX) $(NAME)
+
 $(MLX):
 	@make -C minilibx
-
-all : $(MLX) $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
-	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
