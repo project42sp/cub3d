@@ -27,7 +27,7 @@ int	invalid_name(char *filename)
 		index++;
 	if (ft_strncmp(name_parts[index], "cub", 4))
 		err = FAILED;
-	ft_split_free(name_parts, index);
+	ft_split_free(name_parts, index + 1);
 	if (err)
 		printf("%s\n", "Error: Unexpected file format.");
 	else

@@ -21,7 +21,10 @@ int	main(int argc, char **argv)
 		return (1);
 	scene = parser(argv[1]);
 	if (!scene)
+	{
+		printf("Cub3D: Finishing program.\n\n");
 		return (FAILED);
+	}
 	write (1, "Windows 98 Screensaver\n", 23);
 	mlx = mlx_init();
 	mlx_new_window(mlx, 1024, 516, "Cub3d");

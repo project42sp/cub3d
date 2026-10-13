@@ -12,91 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-/*
-int	invalid_name(char *filename)
-{
-	int		index;
-	char	**name_parts;
-	int		err;
-
-	err = SUCESS;
-	name_parts = ft_split(filename, '.');
-	if (!name_parts)
-		return (FAILED);
-	index = 0;
-	while (name_parts[index + 1] != NULL)
-		index++;
-	if (ft_strncmp(name_parts[index], "cub", 4))
-		err = FAILED;
-	ft_split_free(name_parts, index);
-	if (err)
-		printf("%s\n", "Error: Unexpected file format.");
-	else
-		printf("%s\n", "Cub3D: File Accepted.");
-	return (err);
-}
-*/
-
-int	get_file(char *filename)
-{
-	int	fd;
-
-	if (!filename)
-		return (FALSE);
-	fd = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd <= 0)
-	{
-		perror("Error");
-		return (FALSE);
-	}
-	printf("Cub3D: File %s opened.\n", filename);
-	return (fd);
-}
-
-int	empty_line(char *line)
-{
-	int	index;
-
-	if (!line)
-		return (TRUE);
-	index = 0;
-	while(ft_isspace(line[index]))
-		index++;
-	if (line[index] == '\n' || line[index] == '\0')
-	{
-		printf("%s\n", "Cub3D: Empty line.");
-		return (TRUE);
-	}
-	return (FALSE);
-}
-
-t_scene	*init_map(void)
-{
-	t_scene	*map;
-
-	map = ft_calloc(1, sizeof(t_scene));
-	if (!map)
-	{
-		perror("Error");
-		free(map);
-		return (NULL);
-	}
-	return (map);
-}
-
-int	ismap(char *line)
-{
-	int	index;
-
-	index = 0;
-	while (ft_isspace(line[index]))
-		index++;
-	if (ft_isalnum(line[index]))
-		return (TRUE);
-	return (FALSE);
-}
-
 char	**parsing_map(char *line, int fd)
 {
 	int		map_size;
@@ -181,7 +96,7 @@ t_scene	*parser(char *argv)
 	len_map = check_map_size(fd);
 	if (!len_map.map_size)
 	{
-		printf("Cub3D: Error: Return to Main.");
+		printf("Cub3D: Error: Return to Main.\n");
 		return (NULL);
 	}
 	//map = get_data(argv);

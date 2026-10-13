@@ -23,15 +23,6 @@ t_map_size init_map_size(void)
 	return (len);
 }
 
-int	ignore_space(char *line, int index)
-{
-	if (!line)
-		return index;
-	while (ft_isspace(line[index]))
-		index++;
-	return (index);
-}
-
 char	*count_map_size(t_map_size *len, int fd, char *line)
 {
 	while (line)
@@ -68,10 +59,8 @@ t_map_size	check_map_size(int fd)
 	{
 		len.index = ignore_space(line, len.index);
 		if (!len.map_size && ft_isdigit(line[len.index]))
-		{
 			line = count_map_size(&len, fd, line);
-		}
-		else if (len.map_size && ft_isdigit(line[len.index]))
+		else if (len.map_size && ft_isalnum(line[len.index]))
 		{
 			map_error(len, line, fd);
 			len.map_size = 0;
