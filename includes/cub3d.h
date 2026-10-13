@@ -24,6 +24,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <errno.h>
+# include <fcntl.h>
 # include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
 
@@ -45,6 +47,14 @@ enum e_colortype
 	EA
 };
 
+typedef struct s_map_size
+{
+	int	line_start;
+	int	map_size;
+	int	control;
+	int	index;
+}	t_map_size;
+
 typedef struct s_color
 {
 	int	r;
@@ -54,9 +64,9 @@ typedef struct s_color
 
 typedef struct s_coord
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_coord;
 
 typedef struct s_input
@@ -85,14 +95,36 @@ typedef struct s_scene
 }	t_scene;
 
 // Parser functions
-t_scene	*parser(char *argv);
-int		invalid_name(char *filename);
+// parser.c
+t_scene		*parser(char *argv);
+
+// parser_invalid_name.c
+int			invalid_name(char *filename);
+
+// parser_map_size_check.c
+t_map_size	check_map_size(int fd);
+void		map_error(t_map_size len, char *line, int fd);
+char		*count_map_size(t_map_size *len, int fd, char *line);
+t_map_size	init_map_size(void);
+
+// parser_utils.c
+int			empty_line(char *line);
+int			ignore_space(char *line, int index);
+int			ismap(char *line);
+int			get_file(char *filename);
+t_scene		*init_map(void);
+
+t_scene		*parser(char *argv);
+int			invalid_name(char *filename);
+
 // Input Module Functions
-void	key_handler(t_scene *scene);
-int		key_press(int keycode, t_scene *scene);
-int		key_release(int keycode, t_scene *scene);
-int		key_action(t_scene *scene);
-void	print_inputs(t_input inputs);
+void		key_handler(t_scene *scene);
+int			key_press(int keycode, t_scene *scene);
+int			key_release(int keycode, t_scene *scene);
+int			key_action(t_scene *scene);
+void		print_inputs(t_input inputs);
+
 // Game Module Functions
-int		exit_scene(t_scene *scene);
+int			exit_scene(t_scene *scene);
+
 #endif
