@@ -39,13 +39,25 @@ char	*count_map_size(t_map_size *len, int fd, char *line)
 	return (line);
 }
 
-void	map_error(t_map_size len, char *line, int fd)
+t_map_size	check_map_util(char *line, int fd, t_map_size len)
 {
-	printf("Error: Invalid Input File Map Format.\n");
-	printf("Error line %d: %s", len.control, line);
-	printf("Error character: %c\n", line[len.index]);
+	len.index = ignore_space(line, len.index);
+	if (!len.map_size && ft_isdigit(line[len.index]))
+		line = count_map_size(&len, fd, line);
+	else if (len.map_size && ft_isalnum(line[len.index]))
+	{
+		printf("Error: Invalid Input File Map Format.\n");
+		printf("Error line %d: %s", len.control, line);
+		printf("Error character: %c\n", line[len.index]);
+		free(line);
+		close(fd);
+		len.map_size = 0;
+		return (len);
+	}
+	else
+		len.line_start++;
 	free(line);
-	close(fd);
+	return (len);
 }
 
 t_map_size	check_map_size(int fd)
@@ -57,22 +69,13 @@ t_map_size	check_map_size(int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		len.index = ignore_space(line, len.index);
-		if (!len.map_size && ft_isdigit(line[len.index]))
-			line = count_map_size(&len, fd, line);
-		else if (len.map_size && ft_isalnum(line[len.index]))
-		{
-			map_error(len, line, fd);
-			len.map_size = 0;
-			return (len);
-		}
-		else
-			len.line_start++;
+		len = check_map_util(line, fd, len);
 		len.control++;
-		free(line);
 		len.index = 0;
 		line = get_next_line(fd);
 	}
+	if (len.line_start && !len.map_size)
+		printf("Error: File Content Format.\n");
 	close(fd);
 	return (len);
 }
