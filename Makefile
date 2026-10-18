@@ -14,7 +14,8 @@ SRC_FILES	=	main.c	\
 				input_module/key_handler.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
-				game_module/exit_game.c
+				game_module/exit_game.c			\
+				graphic_module/graphic_config.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -92,6 +93,15 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -sC $(LIBFT_DIR) $@
+
+val:
+	@valgrind \
+		--leak-check=full \
+		--show-leak-kinds=all \
+		--track-origins=yes \
+		--track-fds=yes \
+		--suppressions=mlx.supp \
+		./$(NAME) maps/map.valid_with_space.cub
 
 re: fclean all
 

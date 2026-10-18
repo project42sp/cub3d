@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/12 17:25:30 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/18 17:09:24 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ typedef struct s_input
 	int	esc;
 }	t_input;
 
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct s_scene
 {
 	char	**map;
@@ -91,6 +100,7 @@ typedef struct s_scene
 	char	direction;
 	void	*win;
 	void	*mlx_instance;
+	t_data	*image_obj;
 	t_input	inputs;
 }	t_scene;
 
@@ -127,4 +137,7 @@ void		print_inputs(t_input inputs);
 // Game Module Functions
 int			exit_scene(t_scene *scene);
 
+// Graphic Module Functions
+void		graphic_config(t_scene **scene);
+void		draw_pixel(t_data *image_obj, int x, int y, int color);
 #endif
