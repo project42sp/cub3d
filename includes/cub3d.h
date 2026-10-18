@@ -78,6 +78,19 @@ typedef struct s_input
 	int	esc;
 }	t_input;
 
+typedef struct	s_parameter_check
+{
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	floor;
+	int ceil;
+	int index;
+	int	ctrl;
+}	t_param_check;
+
+
 typedef struct s_scene
 {
 	char	**map;
@@ -106,6 +119,13 @@ t_map_size	check_map_size(int fd);
 void		map_error(t_map_size len, char *line, int fd);
 char		*count_map_size(t_map_size *len, int fd, char *line);
 t_map_size	init_map_size(void);
+
+// parameter_check.c
+int				invalid_parameters(char *argv);
+t_param_check	check_param(char *line, t_param_check check);
+t_param_check	init_check_param(void);
+t_param_check	fill_param_check(int fd);
+
 
 // parser_utils.c
 int			empty_line(char *line);
