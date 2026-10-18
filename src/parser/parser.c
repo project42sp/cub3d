@@ -12,22 +12,25 @@
 
 #include "../../includes/cub3d.h"
 
+// TODO: After reaching line where map start, start ingesting map.
+// Still needs to ft_calloc the char** map for moving pointers.
 char	**parse_map(int fd, t_map_size len)
 {
 	int		parsed_map;
 	char	*line;
 	char	**map;
 
+	(void)map;
+	(void)parsed_map;
 	parsed_map = FALSE;
-	while (len.control != len.line_start)
+	line = get_next_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
 		free(line);
 		len.control++;
+		line = get_next_line(fd);
 	}
 	line = get_next_line(fd);
-	// TODO: After reaching line where map start, start ingesting map.
-	// Still needs to ft_calloc the char** map for moving pointers.
 	return (NULL);
 }
 
@@ -59,12 +62,17 @@ t_scene	*parser(char *argv)
 
 	if (invalid_name(argv))
 		return (NULL);
+	if (invalid_parameters(argv))
+		return (NULL);
 	fd = get_file(argv);
 	if (fd <= 0)
 		return (NULL);
 	len_map = check_map_size(fd);
 	if (!len_map.map_size)
+	{
+		printf("Error: Map format\n");
 		return (NULL);
+	}
 	scene = get_data(argv, len_map);
 	if (!scene)
 		return (NULL);
