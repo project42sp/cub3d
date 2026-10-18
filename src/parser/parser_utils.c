@@ -77,6 +77,5 @@ int	get_file(char *filename)
 		perror("Error");
 		return (FALSE);
 	}
-	printf("Cub3D: File %s opened.\n", filename);
 	return (fd);
 }
