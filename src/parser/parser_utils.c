@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	ignore_space(char *line, int index)
 {
@@ -77,6 +77,5 @@ int	get_file(char *filename)
 		perror("Error");
 		return (FALSE);
 	}
-	printf("Cub3D: File %s opened.\n", filename);
 	return (fd);
 }

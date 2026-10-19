@@ -7,10 +7,11 @@ LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_FILES	=	main.c	\
-				parser.c	\
-				parser_utils.c	\
-				parser_invalid_name.c	\
-				parser_map_size_check.c		\
+				parser/parser.c	\
+				parser/parser_utils.c	\
+				parser/invalid_name.c	\
+				parser/map_size_check.c		\
+				parser/parameter_check.c	\
 				input_module/key_handler.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\

@@ -10,92 +10,71 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-char	**parsing_map(char *line, int fd)
-{
-	int		map_size;
-	int		index;
-	char	**map;
-
-	map_size = 1;
-	index = 0;
-	map = NULL;
-	while (ismap(line))
-	{
-		map_size++;
-		map = ft_calloc(map_size, sizeof(char *));
-		if (!map_size)
-		{
-			ft_split_free(map, map_size);
-			return (NULL);
-		}
-		map[index] = line;
-		line = get_next_line(fd);
-	}
-	return (NULL);
-}
-
-t_scene	*parse_data(int fd)
+// TODO: After reaching line where map start, start ingesting map.
+// Still needs to ft_calloc the char** map for moving pointers.
+char	**parse_map(int fd, t_map_size len)
 {
 	int		parsed_map;
 	char	*line;
-	t_scene	*data;
+	char	**map;
 
-	data = init_map();
-	if (!data)
-		return (NULL);
-	printf("Cub3D: Start Parsing file...\n");
+	(void)map;
+	(void)parsed_map;
 	parsed_map = FALSE;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (!empty_line(line))
-		{
-			if (!parsed_map && ismap(line))
-			{
-				parsed_map = TRUE;
-			}
-		}
 		free(line);
+		len.control++;
 		line = get_next_line(fd);
 	}
+	line = get_next_line(fd);
 	return (NULL);
 }
 
-t_scene	*get_data(char *argv)
+t_scene	*get_data(int fd, t_map_size len_map)
 {
-	int		fd;
-	t_scene	*map;
+	t_scene	*data;
 
-	if (!argv)
+	printf("Cub3D: Start Parsing file...\n");
+	data = init_map();
+	if (!data)
+	{
+		close(fd);
 		return (NULL);
-	fd = get_file(argv);
-	if (fd <= 0)
+	}
+	data->map = parse_map(fd, len_map);
+	if (!data->map)
+	{
+		close(fd);
+		free(data);
 		return (NULL);
-	map = parse_data(fd);
-	if (!map)
-		return (NULL);
+	}
 	printf("Cub3D: Closing file.");
 	close(fd);
-	return (map);
+	return (data);
 }
 
 t_scene	*parser(char *argv)
 {
-	t_map_size	len_map;
 	int			fd;
+	t_scene		*scene;
+	t_map_size	len_map;
 
 	if (invalid_name(argv))
+		return (NULL);
+	if (invalid_parameters(argv))
+		return (NULL);
+	len_map = check_map_size(argv);
+	if (!len_map.map_size)
 		return (NULL);
 	fd = get_file(argv);
 	if (fd <= 0)
 		return (NULL);
-	len_map = check_map_size(fd);
-	if (!len_map.map_size)
-	{
-		printf("Cub3D: Error: Return to Main.\n");
+	scene = get_data(fd, len_map);
+	if (!scene)
 		return (NULL);
-	}
-	return (NULL);
+	return (scene);
 }

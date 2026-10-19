@@ -78,6 +78,18 @@ typedef struct s_input
 	int	esc;
 }	t_input;
 
+typedef struct s_parameter_check
+{
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	floor;
+	int	ceil;
+	int	index;
+	int	ctrl;
+}	t_param;
+
 typedef struct s_data
 {
 	void	*img;
@@ -112,10 +124,16 @@ t_scene		*parser(char *argv);
 int			invalid_name(char *filename);
 
 // parser_map_size_check.c
-t_map_size	check_map_size(int fd);
+t_map_size	check_map_size(char *argv);
 void		map_error(t_map_size len, char *line, int fd);
 char		*count_map_size(t_map_size *len, int fd, char *line);
 t_map_size	init_map_size(void);
+
+// parameter_check.c
+int			invalid_parameters(char *argv);
+t_param		check_param(char *line, t_param check);
+t_param		init_check_param(void);
+t_param		fill_param_check(int fd);
 
 // parser_utils.c
 int			empty_line(char *line);
@@ -123,9 +141,6 @@ int			ignore_space(char *line, int index);
 int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
-
-t_scene		*parser(char *argv);
-int			invalid_name(char *filename);
 
 // Input Module Functions
 void		key_handler(t_scene *scene);

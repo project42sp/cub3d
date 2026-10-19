@@ -21,7 +21,8 @@ int	main(int argc, char **argv)
 	scene = parser(argv[1]);
 	if (scene)
 	{
-		printf("Cub3D: Finishing program.\n\n");
+		free(scene);
+		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
 	}
 	scene = ft_calloc(1, sizeof(t_scene));
