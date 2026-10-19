@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/18 17:09:24 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/19 00:38:33 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,15 +125,9 @@ int			invalid_name(char *filename);
 
 // parser_map_size_check.c
 t_map_size	check_map_size(char *argv);
-void		map_error(t_map_size len, char *line, int fd);
-char		*count_map_size(t_map_size *len, int fd, char *line);
-t_map_size	init_map_size(void);
 
 // parameter_check.c
 int			invalid_parameters(char *argv);
-t_param		check_param(char *line, t_param check);
-t_param		init_check_param(void);
-t_param		fill_param_check(int fd);
 
 // parser_utils.c
 int			empty_line(char *line);

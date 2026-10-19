@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/09/12 22:32:01 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/19 00:37:44 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO: After reaching line where map start, start ingesting map.
 // Still needs to ft_calloc the char** map for moving pointers.
-char	**parse_map(int fd, t_map_size len)
+static char	**parse_map(int fd, t_map_size len)
 {
 	int		parsed_map;
 	char	*line;
@@ -34,7 +34,7 @@ char	**parse_map(int fd, t_map_size len)
 	return (NULL);
 }
 
-t_scene	*get_data(int fd, t_map_size len_map)
+static t_scene	*get_data(int fd, t_map_size len_map)
 {
 	t_scene	*data;
 
@@ -57,10 +57,8 @@ t_scene	*get_data(int fd, t_map_size len_map)
 	return (data);
 }
 
-t_scene	*parser(char *argv)
+static t_map_size	invalid_file(char *argv)
 {
-	int			fd;
-	t_scene		*scene;
 	t_map_size	len_map;
 
 	if (invalid_name(argv))
@@ -68,6 +66,16 @@ t_scene	*parser(char *argv)
 	if (invalid_parameters(argv))
 		return (NULL);
 	len_map = check_map_size(argv);
+	return (len_map);
+}
+
+t_scene	*parser(char *argv)
+{
+	int			fd;
+	t_scene		*scene;
+	t_map_size	len_map;
+
+	len_map = invalid_file(argv);
 	if (!len_map.map_size)
 		return (NULL);
 	fd = get_file(argv);

@@ -6,13 +6,13 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 23:03:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/18 23:03:54 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/19 00:38:27 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_param	check_param(char *line, t_param check)
+static t_param	check_param(char *line, t_param check)
 {
 	if (!ft_strncmp("NO ", &line[check.index], 3))
 		check.no++;
@@ -31,7 +31,7 @@ t_param	check_param(char *line, t_param check)
 	return (check);
 }
 
-t_param	init_check_param(void)
+static t_param	init_check_param(void)
 {
 	t_param	check;
 
@@ -46,7 +46,7 @@ t_param	init_check_param(void)
 	return (check);
 }
 
-t_param	fill_param_check(int fd)
+static t_param	fill_param_check(int fd)
 {
 	char	*line;
 	t_param	check;
