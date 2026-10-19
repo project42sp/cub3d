@@ -21,10 +21,10 @@ int	main(int argc, char **argv)
 	scene = parser(argv[1]);
 	if (scene)
 	{
+		free(scene);
 		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
 	}
-	free(scene);
 	scene = ft_calloc(1, sizeof(t_scene));
 	graphic_config(&scene);
 	key_handler(scene);
