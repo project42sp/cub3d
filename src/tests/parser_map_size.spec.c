@@ -1,7 +1,7 @@
 #include "../../includes/cub3d.h"
 #include <cmocka.h>
 
-t_map_size	check_map_size(int fd);
+t_map_size	check_map_size(char *argv);
 int			get_file(char *filename);
 
 static void	valid_file_normal_format(void **state)
@@ -9,11 +9,8 @@ static void	valid_file_normal_format(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.valid_reference_map.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 	t_map_size	map_check = {
 		.line_start = 12,
 		.map_size = 14,
@@ -30,11 +27,8 @@ static void	valid_file_with_initial_space(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.valid_with_space.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 	t_map_size	map_check = {
 		.line_start = 12,
 		.map_size = 14,
@@ -51,11 +45,8 @@ static void	invalid_file_no_map(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_no_map.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 
 	// If function fails to parse, return map_size = 0
 	assert_false(map_test.map_size);
@@ -66,11 +57,8 @@ static void	invalid_file_double_map(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_double_map.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 
 	// If function fails to parse, return map_size = 0
 	assert_false(map_test.map_size);
@@ -81,11 +69,8 @@ static void	invalid_file_line_in_map(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_line_in_map.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 
 	// If function fails to parse, return map_size = 0
 	assert_false(map_test.map_size);
@@ -96,11 +81,8 @@ static void	invalid_file_content_after_map(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_content_after_map.cub";
-	int		fd	= get_file(filename);
-	if (fd <= 0)
-		return ;
 
-	t_map_size	map_test = check_map_size(fd);
+	t_map_size	map_test = check_map_size(filename);
 
 	// If function fails to parse, return map_size = 0
 	assert_false(map_test.map_size);
