@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/18 17:09:24 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/18 23:43:20 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@
 # define K_D 100
 # define K_S 115
 # define K_A 97
+
+// COLORS
+# define RED 0x00FF0000
+# define GREY 0xD3D3D3
+# define WHITE 0xFFFFFF
+# define GREEN 0x39FF14
 
 // Parser MAP structs
 enum e_colortype
@@ -140,4 +146,5 @@ int			exit_scene(t_scene *scene);
 // Graphic Module Functions
 void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
+void		render_map(t_scene *scene);
 #endif

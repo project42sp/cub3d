@@ -15,7 +15,8 @@ SRC_FILES	=	main.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
 				game_module/exit_game.c			\
-				graphic_module/graphic_config.c
+				graphic_module/graphic_config.c \
+				graphic_module/render_map.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
