@@ -11,6 +11,7 @@ SRC_FILES	=	main.c	\
 				parser/parser_utils.c	\
 				parser/invalid_name.c	\
 				parser/map_size_check.c		\
+				parser/parameter_check.c	\
 				input_module/key_handler.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
@@ -92,6 +93,15 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -sC $(LIBFT_DIR) $@
+
+val:
+	@valgrind \
+		--leak-check=full \
+		--show-leak-kinds=all \
+		--track-origins=yes \
+		--track-fds=yes \
+		--suppressions=mlx.supp \
+		./$(NAME) maps/map.valid_with_space.cub
 
 re: fclean all
 
