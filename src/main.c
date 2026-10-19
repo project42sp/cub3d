@@ -21,9 +21,10 @@ int	main(int argc, char **argv)
 	scene = parser(argv[1]);
 	if (!scene)
 	{
-		printf("Cub3D: Finishing program.\n\n");
+		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
 	}
+	free(scene);
 	scene = ft_calloc(1, sizeof(t_scene));
 	scene->mlx_instance = mlx_init();
 	scene->win = mlx_new_window(scene->mlx_instance, 1280, 720,
