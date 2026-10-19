@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	scene = parser(argv[1]);
-	if (!scene)
+	if (scene)
 	{
 		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
