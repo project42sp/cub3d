@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parameter_check.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/18 23:03:50 by buehara           #+#    #+#             */
+/*   Updated: 2026/10/18 23:03:54 by buehara          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_param_check	check_param(char *line, t_param_check check)
+t_param	check_param(char *line, t_param check)
 {
 	if (!ft_strncmp("NO ", &line[check.index], 3))
 		check.no++;
@@ -20,9 +31,9 @@ t_param_check	check_param(char *line, t_param_check check)
 	return (check);
 }
 
-t_param_check	init_check_param(void)
+t_param	init_check_param(void)
 {
-	t_param_check	check;
+	t_param	check;
 
 	check.ctrl = 0;
 	check.index = 0;
@@ -35,10 +46,10 @@ t_param_check	init_check_param(void)
 	return (check);
 }
 
-t_param_check	fill_param_check(int fd)
+t_param	fill_param_check(int fd)
 {
 	char	*line;
-	t_param_check	check;
+	t_param	check;
 
 	check = init_check_param();
 	line = get_next_line(fd);
@@ -52,13 +63,13 @@ t_param_check	fill_param_check(int fd)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	return check;
+	return (check);
 }
 
 int	invalid_parameters(char *argv)
 {
-	int				fd;
-	t_param_check	check;
+	int		fd;
+	t_param	check;
 
 	fd = get_file(argv);
 	if (fd <= 0)
@@ -73,7 +84,8 @@ int	invalid_parameters(char *argv)
 		|| check.floor > 1 || check.ceil > 1)
 	{
 		printf("Cub3D: Error: Duplicate Parameter Found.\n");
-		return (FAILED);}
+		return (FAILED);
+	}
 	if (!check.no || !check.ea || !check.so || !check.we
 		|| !check.floor || !check.ceil)
 	{
