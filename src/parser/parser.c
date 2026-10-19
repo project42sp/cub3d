@@ -34,21 +34,24 @@ char	**parse_map(int fd, t_map_size len)
 	return (NULL);
 }
 
-t_scene	*get_data(char *argv, t_map_size len_map)
+t_scene	*get_data(int fd, t_map_size len_map)
 {
-	int		fd;
 	t_scene	*data;
 
-	fd = get_file(argv);
-	if (fd <= 0)
-		return (NULL);
 	printf("Cub3D: Start Parsing file...\n");
 	data = init_map();
 	if (!data)
+	{
+		close(fd);
 		return (NULL);
+	}
 	data->map = parse_map(fd, len_map);
 	if (!data->map)
+	{
+		close(fd);
+		free(data);
 		return (NULL);
+	}
 	printf("Cub3D: Closing file.");
 	close(fd);
 	return (data);
@@ -64,16 +67,13 @@ t_scene	*parser(char *argv)
 		return (NULL);
 	if (invalid_parameters(argv))
 		return (NULL);
+	len_map = check_map_size(argv);
+	if (!len_map.map_size)
+		return (NULL);
 	fd = get_file(argv);
 	if (fd <= 0)
 		return (NULL);
-	len_map = check_map_size(fd);
-	if (!len_map.map_size)
-	{
-		printf("Error: Map format\n");
-		return (NULL);
-	}
-	scene = get_data(argv, len_map);
+	scene = get_data(fd, len_map);
 	if (!scene)
 		return (NULL);
 	return (scene);

@@ -51,6 +51,7 @@ t_param_check	fill_param_check(int fd)
 		check.index = 0;
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return check;
 }
 
@@ -68,11 +69,13 @@ int	invalid_parameters(char *argv)
 		printf("Cub3D: Error: Unexpected Parameter Found.\n");
 		return (FAILED);
 	}
-	if (check.no > 1 || check.ea > 1 || check.so > 1 || check.we > 1)
+	if (check.no > 1 || check.ea > 1 || check.so > 1 || check.we > 1
+		|| check.floor > 1 || check.ceil > 1)
 	{
 		printf("Cub3D: Error: Duplicate Parameter Found.\n");
 		return (FAILED);}
-	if (!check.no || !check.ea || !check.so || !check.we)
+	if (!check.no || !check.ea || !check.so || !check.we
+		|| !check.floor || !check.ceil)
 	{
 		printf("Cub3D: Error: Missing obligatory parameter on file.\n");
 		return (FAILED);

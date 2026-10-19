@@ -115,7 +115,7 @@ t_scene		*parser(char *argv);
 int			invalid_name(char *filename);
 
 // parser_map_size_check.c
-t_map_size	check_map_size(int fd);
+t_map_size	check_map_size(char *argv);
 void		map_error(t_map_size len, char *line, int fd);
 char		*count_map_size(t_map_size *len, int fd, char *line);
 t_map_size	init_map_size(void);

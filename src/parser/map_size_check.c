@@ -60,12 +60,16 @@ t_map_size	check_map_util(char *line, int fd, t_map_size len)
 	return (len);
 }
 
-t_map_size	check_map_size(int fd)
+t_map_size	check_map_size(char *argv)
 {
 	char		*line;
 	t_map_size	len;
+	int			fd;
 
 	len = init_map_size();
+	fd = get_file(argv);
+	if (fd <= 0)
+		return (len);
 	line = get_next_line(fd);
 	while (line)
 	{
