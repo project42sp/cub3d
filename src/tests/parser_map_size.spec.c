@@ -2,7 +2,6 @@
 #include <cmocka.h>
 
 t_map_size	check_map_size(char *argv);
-int			get_file(char *filename);
 
 static void	valid_file_normal_format(void **state)
 {
