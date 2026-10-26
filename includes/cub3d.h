@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/18 23:43:20 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/25 21:54:36 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 
 // COLORS
 # define RED 0x00FF0000
+# define BLACK 0x00000000
 # define GREY 0xD3D3D3
 # define WHITE 0xFFFFFF
 # define GREEN 0x39FF14
@@ -72,8 +73,15 @@ typedef struct s_coord
 {
 	double	x;
 	double	y;
-	double	z;
+	int		dir_x;
+	int		dir_y;
 }	t_coord;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
 
 typedef struct s_input
 {
@@ -146,5 +154,12 @@ int			exit_scene(t_scene *scene);
 // Graphic Module Functions
 void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
+void		draw_direction_line(t_data *image_obj, t_pos pos, int color);
 void		render_map(t_scene *scene);
+void		draw_tile(t_data *image_obj, int y, int x, int color);
+void		render(t_scene *scene);
+void		render_player(t_scene *scene);
+void		render_direction(t_scene *scene);
+void		bresengam(t_pos init_pos, t_pos end_pos,
+				t_pos delta, t_scene *scene);
 #endif
