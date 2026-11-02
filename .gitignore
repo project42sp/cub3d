@@ -2,3 +2,5 @@ cub3d
 obj/
 *.o
 build/
+*.swp
+
