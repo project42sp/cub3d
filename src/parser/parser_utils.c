@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 21:31:58 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/12 21:32:03 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/25 21:48:58 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	ismap(char *line)
 	index = 0;
 	while (ft_isspace(line[index]))
 		index++;
-	if (ft_isalnum(line[index]))
+	if (ft_isalpha(line[index]))
+		return (FALSE);
+	if (ft_isdigit(line[index]))
 		return (TRUE);
 	return (FALSE);
 }
@@ -71,6 +73,7 @@ int	get_file(char *filename)
 	if (!filename)
 		return (FALSE);
 	fd = 0;
+	printf("Cub3D: Opening file '%s'\n", filename);
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
 	{
