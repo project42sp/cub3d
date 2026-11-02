@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/19 00:38:33 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/25 20:35:09 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,16 @@ typedef struct s_scene
 t_scene		*parser(char *argv);
 
 // parser_invalid_name.c
-int			invalid_name(char *filename);
+int			invalid_name(char *filename, char *file_format);
 
 // parser_map_size_check.c
 t_map_size	check_map_size(char *argv);
 
 // parameter_check.c
 int			invalid_parameters(char *argv);
+
+// content_validation.c
+int			invalid_content(char *argv);
 
 // parser_utils.c
 int			empty_line(char *line);

@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/18 18:18:07 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/10/25 17:49:40 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	scene = parser(argv[1]);
-	if (scene)
+	if (!scene)
 	{
 		free(scene);
 		printf("Cub3D: Finishing program.\n");

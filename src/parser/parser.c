@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/19 00:37:44 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/25 20:35:31 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,17 @@ static t_scene	*get_data(int fd, t_map_size len_map)
 	return (data);
 }
 
-static t_map_size	invalid_file(char *argv)
+static int	invalid_file(char *argv)
 {
-	t_map_size	len_map;
-
-	if (invalid_name(argv))
-		return (NULL);
+	if (invalid_name(argv, "cub"))
+		return (FAILED);
 	if (invalid_parameters(argv))
-		return (NULL);
-	len_map = check_map_size(argv);
-	return (len_map);
+		return (FAILED);
+	printf("Cub3D: Parameters Accepted.\n");
+	if (invalid_content(argv))
+		return (FAILED);
+	printf("Cub3D: Parameter Values Accepted.\n");
+	return (SUCESS);
 }
 
 t_scene	*parser(char *argv)
@@ -75,7 +76,9 @@ t_scene	*parser(char *argv)
 	t_scene		*scene;
 	t_map_size	len_map;
 
-	len_map = invalid_file(argv);
+	if (invalid_file(argv))
+		return (NULL);
+	len_map = check_map_size(argv);
 	if (!len_map.map_size)
 		return (NULL);
 	fd = get_file(argv);
