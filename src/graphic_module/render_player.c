@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:10:08 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 20:57:03 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/02 18:55:40 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,5 @@ void	render_player(t_scene *scene)
 
 	x = scene->player.x * 16;
 	y = scene->player.y * 16;
-	ft_printf("%d\n", x);
-	ft_printf("%d", y);
 	draw_player(scene->image_obj, y, x, RED);
 }
