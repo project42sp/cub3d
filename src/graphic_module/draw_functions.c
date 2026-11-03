@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 21:35:52 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 21:36:35 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/03 01:06:50 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,24 @@ void	draw_direction_line(t_data *image_obj, t_pos pos, int color)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	clear_frame(t_scene *scene)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = x;
+	while (y <= HEIGHT)
+	{
+		x = 0;
+		while (x <= WIDTH)
+		{
+			draw_pixel(scene->image_obj, x, y, BLACK);
+			x++;
+		}
+		y++;
 	}
 }

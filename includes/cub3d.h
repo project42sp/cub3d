@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 21:54:36 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/03 01:04:44 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <fcntl.h>
 # include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
+# include <sys/time.h>
 
 // KEYCODES
 # define K_ESC 65307
@@ -35,6 +36,10 @@
 # define K_D 100
 # define K_S 115
 # define K_A 97
+
+// CONFIG VARS
+# define HEIGHT 720
+# define WIDTH 1280
 
 // COLORS
 # define RED 0x00FF0000
@@ -103,10 +108,10 @@ typedef struct s_data
 
 typedef struct s_scene
 {
-	char	**map;
 	t_color	floor;
 	t_color	ceil;
 	t_coord	player;
+	char	**map;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -116,6 +121,7 @@ typedef struct s_scene
 	void	*mlx_instance;
 	t_data	*image_obj;
 	t_input	inputs;
+	long	last_time_render;
 }	t_scene;
 
 // Parser functions
@@ -150,13 +156,14 @@ void		print_inputs(t_input inputs);
 
 // Game Module Functions
 int			exit_scene(t_scene *scene);
-
+int			game_loop(t_scene *scene);
 // Graphic Module Functions
 void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
 void		draw_direction_line(t_data *image_obj, t_pos pos, int color);
 void		render_map(t_scene *scene);
 void		draw_tile(t_data *image_obj, int y, int x, int color);
+void		clear_frame(t_scene *scene);
 void		render(t_scene *scene);
 void		render_player(t_scene *scene);
 void		render_direction(t_scene *scene);
