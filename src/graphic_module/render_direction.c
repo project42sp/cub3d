@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 17:36:27 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 21:56:23 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/03 01:08:59 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static	t_pos	end_position_coords(t_pos init_pos, t_scene *scene)
 {
 	t_pos	pos;
 
-	pos.x = init_pos.x + scene->player.dir_x * 64;
-	pos.y = init_pos.y + scene->player.dir_y * 64;
+	pos.x = init_pos.x + scene->player.dir_x * 32;
+	pos.y = init_pos.y + scene->player.dir_y * 32;
 	return (pos);
 }
 
@@ -70,7 +70,7 @@ void	bresengam(t_pos init_pos, t_pos end_pos, t_pos delta, t_scene *scene)
 		if ((init_pos.y < 0 || init_pos.x < 0)
 			|| (init_pos.x == end_pos.x && init_pos.y == end_pos.y))
 			break ;
-		draw_direction_line(scene->image_obj, init_pos, GREEN);
+		draw_direction_line(scene->image_obj, init_pos, RED);
 		if ((2 * err) > -delta.y)
 		{
 			err -= delta.y;
