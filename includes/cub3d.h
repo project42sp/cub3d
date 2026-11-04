@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 20:35:09 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/04 00:21:16 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ int			invalid_parameters(char *argv);
 
 // content_validation.c
 int			invalid_content(char *argv);
+
+// ingest_file.c
+char		**ingest_file(char *argv, t_map_size map_size);
 
 // parser_utils.c
 int			empty_line(char *line);
