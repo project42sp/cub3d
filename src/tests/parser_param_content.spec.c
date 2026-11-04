@@ -55,6 +55,24 @@ static void	invalid_color_range_negative(void **state)
 	assert_true(invalid_content(filename));
 }
 
+static void	invalid_color_paramn_amount_over(void **state)
+{
+	(void)state;
+
+	char	*filename = "./maps/map.invalid_color_paramn_amount_over.cub";
+
+	assert_true(invalid_content(filename));
+}
+
+static void	invalid_color_paramn_amount_fewer(void **state)
+{
+	(void)state;
+
+	char	*filename = "./maps/map.invalid_color_paramn_amount_fewer.cub";
+
+	assert_true(invalid_content(filename));
+}
+
 int	main(void)
 {
 	const struct CMUnitTest tests[] = {
@@ -63,7 +81,9 @@ int	main(void)
 		cmocka_unit_test(invalid_texture_format),
 		cmocka_unit_test(invalid_color_format),
 		cmocka_unit_test(invalid_color_range),
-		cmocka_unit_test(invalid_color_range_negative)
+		cmocka_unit_test(invalid_color_range_negative),
+		cmocka_unit_test(invalid_color_paramn_amount_over),
+		cmocka_unit_test(invalid_color_paramn_amount_fewer)
 	};
 	return cmocka_run_group_tests(tests, NULL, NULL);
 }
