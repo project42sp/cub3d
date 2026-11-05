@@ -6,20 +6,11 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 16:12:37 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/18 18:40:23 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/02 18:52:46 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	draw_pixel(t_data *image_obj, int x, int y, int color)
-{
-	char	*dest_pixel;
-
-	dest_pixel = image_obj->addr
-		+ (y * image_obj->line_length + x * (image_obj->bits_per_pixel / 8));
-	*(unsigned int *)dest_pixel = color;
-}
 
 void	graphic_config(t_scene **scene)
 {

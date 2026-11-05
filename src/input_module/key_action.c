@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:23:30 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/12 17:33:17 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/04 23:01:09 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	key_action(t_scene *scene)
 {
-	if (scene->inputs.esc == 1)
-	{
+	if (scene->inputs.esc)
 		exit_scene(scene);
-	}
 	return (0);
 }
