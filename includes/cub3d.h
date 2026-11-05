@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/03 01:04:44 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/04 22:21:49 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@
 # define K_D 100
 # define K_S 115
 # define K_A 97
+# define K_ARROW_UP 65362
+# define K_ARROW_DOWN 65364
+# define K_ARROW_LEFT 65361
+# define K_ARROW_RIGHT 65363
 
 // CONFIG VARS
 # define HEIGHT 720
@@ -95,6 +99,10 @@ typedef struct s_input
 	int	d;
 	int	a;
 	int	esc;
+	int	arrow_up;
+	int	arrow_down;
+	int	arrow_left;
+	int	arrow_right;
 }	t_input;
 
 typedef struct s_data
