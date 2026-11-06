@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/25 20:35:31 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/04 22:57:19 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 // TODO: After reaching line where map start, start ingesting map.
 // Still needs to ft_calloc the char** map for moving pointers.
+// 
+/*
 static char	**parse_map(int fd, t_map_size len)
 {
 	int		parsed_map;
@@ -33,34 +35,22 @@ static char	**parse_map(int fd, t_map_size len)
 	line = get_next_line(fd);
 	return (NULL);
 }
+*/
 
-static t_scene	*get_data(int fd, t_map_size len_map)
+static int	data_check(char *argv)
 {
-	t_scene	*data;
+	char		**data;
+	t_map_size	len_map;
 
-	printf("Cub3D: Start Parsing file...\n");
-	data = init_map();
-	if (!data)
-	{
-		close(fd);
-		return (NULL);
-	}
-	data->map = parse_map(fd, len_map);
-	if (!data->map)
-	{
-		close(fd);
-		free(data);
-		return (NULL);
-	}
-	printf("Cub3D: Closing file.");
-	close(fd);
-	return (data);
-}
-
-static int	invalid_file(char *argv)
-{
 	if (invalid_name(argv, "cub"))
 		return (FAILED);
+	len_map = check_map_size(argv);
+	if (!len_map.map_size)
+		return (0);
+	data = ingest_file(argv, len_map);
+	if (!data)
+		return (0);
+	ft_split_free(data, len_map.map_size + 7);
 	if (invalid_parameters(argv))
 		return (FAILED);
 	printf("Cub3D: Parameters Accepted.\n");
@@ -74,18 +64,12 @@ t_scene	*parser(char *argv)
 {
 	int			fd;
 	t_scene		*scene;
-	t_map_size	len_map;
 
-	if (invalid_file(argv))
-		return (NULL);
-	len_map = check_map_size(argv);
-	if (!len_map.map_size)
+	if (data_check(argv))
 		return (NULL);
 	fd = get_file(argv);
 	if (fd <= 0)
 		return (NULL);
-	scene = get_data(fd, len_map);
-	if (!scene)
-		return (NULL);
+	scene = NULL;
 	return (scene);
 }

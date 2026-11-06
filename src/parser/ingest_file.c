@@ -23,11 +23,10 @@ char	**clean_gnl(int fd, t_map_size map_size)
 		else
 			free(line);
 	}
-	data[idx] = NULL;
 	return (data);
 }
 
-char **ingest_file(char *argv, t_map_size map_size)
+char	**ingest_file(char *argv, t_map_size map_size)
 {
 	int			fd;
 	char		**data;
@@ -41,8 +40,5 @@ char **ingest_file(char *argv, t_map_size map_size)
 	if (!data)
 		return (NULL);
 	printf("Cub3D: Finish clean ingestion.\n");
-	for (int i = 0; i < map_size.map_size + 7; i++){
-		printf("Map line %d: %s", i, data[i]);
-	}
 	return (data);
 }
