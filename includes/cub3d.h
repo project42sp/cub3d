@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 16:22:57 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:56:37 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,10 @@ void		clear_frame(t_scene *scene);
 void		render(t_scene *scene);
 void		render_player(t_scene *scene);
 void		render_direction(t_scene *scene);
-void		draw_wall(t_scene *scene, int wall_height, int x);
 void		bresengam(t_pos init_pos, t_pos end_pos,
 				t_pos delta, t_scene *scene);
+double		dda(t_scene *scene, double dir_x, double dir_y);
+t_ray		init_ray(t_scene *scene, double dir_x, double dir_y);
+void		draw_wall(t_scene *scene, int wall_height, int x);
+void		render(t_scene *scene);
 #endif

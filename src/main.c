@@ -6,36 +6,36 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 15:14:34 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:02:58 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 // Example of a map 4x4 with player looking to north
-static void	mock_initializer(t_scene **scene)
-{
-	  const char *map =
-        "1111111111111111\n"
-        "1000001000000001\n"
-        "1000000100000001\n"
-        "1000000010000001\n"
-        "1000L00001000001\n"
-        "1000000000100001\n"
-        "1000000000010001\n"
-        "1000000000001001\n"
-        "1000000000000101\n"
-        "1000000000000001\n"
-        "1000000000000001\n"
-        "1111111111111111";
-	(*scene)->map = ft_split(map, '\n');
-    (*scene)->camera.pos_x = 4.5;
-    (*scene)->camera.pos_y = 4.5;
-    (*scene)->camera.dir_x = -1.0;
-    (*scene)->camera.dir_y = 0.0;
-    (*scene)->camera.plane_x = 0.0;
-    (*scene)->camera.plane_y = 0.82;
-}
+// static void	mock_initializer(t_scene **scene)
+// {
+// 	  const char *map =
+//         "1111111111111111\n"
+//         "1000001000000001\n"
+//         "1000000100000001\n"
+//         "1000000010000001\n"
+//         "1000L00001000001\n"
+//         "1000000000100001\n"
+//         "1000000000010001\n"
+//         "1000000000001001\n"
+//         "1000000000000101\n"
+//         "1000000000000001\n"
+//         "1000000000000001\n"
+//         "1111111111111111";
+// 	(*scene)->map = ft_split(map, '\n');
+//     (*scene)->camera.pos_x = 4.5;
+//     (*scene)->camera.pos_y = 4.5;
+//     (*scene)->camera.dir_x = -1.0;
+//     (*scene)->camera.dir_y = 0.0;
+//     (*scene)->camera.plane_x = 0.0;
+//     (*scene)->camera.plane_y = 0.82;
+// }
 
 int	main(int argc, char **argv)
 {
@@ -52,7 +52,6 @@ int	main(int argc, char **argv)
 	}
 	scene = ft_calloc(1, sizeof(t_scene));
 	graphic_config(&scene);
-	mock_initializer(&scene);
 	key_handler(scene);
 	mlx_loop_hook(scene->mlx_instance, game_loop, scene);
 	mlx_loop(scene->mlx_instance);
