@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 00:22:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/07 00:00:59 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/07 00:46:45 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ int	invalid_param_content(char **split)
 		if (new_line)
 			new_line[0] = '\0';
 		if (invalid_name(split[1], "xpm"))
-		{
 			return (FAILED);
-		}
 		temp_fd = get_file(split[1]);
 		if (temp_fd <= 0)
 		{
@@ -98,7 +96,7 @@ int	line_check_invalid(char **split)
 
 int	invalid_content(char **data, t_map_size len)
 {
-	char **split;
+	char	**split;
 
 	len.index = 0;
 	while (len.index < len.control)
