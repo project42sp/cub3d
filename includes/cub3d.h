@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/04 22:21:49 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:56:37 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "../minilibx/mlx.h"
 # include "libft/includes/libft.h"
 # include <sys/time.h>
+# include <math.h>
 
 // KEYCODES
 # define K_ESC 65307
@@ -78,18 +79,20 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef struct s_coord
+typedef struct s_camera
 {
-	double	x;
-	double	y;
-	int		dir_x;
-	int		dir_y;
-}	t_coord;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_camera;
 
 typedef struct s_pos
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_pos;
 
 typedef struct s_input
@@ -126,22 +129,36 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_ray
+{
+	t_pos	dir;
+	t_pos	delta_dist;
+	t_pos	side_dist;
+	double	perp_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		hit;
+}	t_ray;
+
 typedef struct s_scene
 {
-	t_color	floor;
-	t_color	ceil;
-	t_coord	player;
-	char	**map;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	direction;
-	void	*win;
-	void	*mlx_instance;
-	t_data	*image_obj;
-	t_input	inputs;
-	long	last_time_render;
+	t_color		floor;
+	t_color		ceil;
+	t_camera	camera;
+	char		**map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		direction;
+	void		*win;
+	void		*mlx_instance;
+	t_data		*image_obj;
+	t_input		inputs;
+	long		last_time_render;
 }	t_scene;
 
 // Parser functions
@@ -180,6 +197,7 @@ void		print_inputs(t_input inputs);
 // Game Module Functions
 int			exit_scene(t_scene *scene);
 int			game_loop(t_scene *scene);
+long		get_time(void);
 // Graphic Module Functions
 void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
@@ -192,4 +210,8 @@ void		render_player(t_scene *scene);
 void		render_direction(t_scene *scene);
 void		bresengam(t_pos init_pos, t_pos end_pos,
 				t_pos delta, t_scene *scene);
+double		dda(t_scene *scene, double dir_x, double dir_y);
+t_ray		init_ray(t_scene *scene, double dir_x, double dir_y);
+void		draw_wall(t_scene *scene, int wall_height, int x);
+void		render(t_scene *scene);
 #endif
