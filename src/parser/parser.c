@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/04 22:57:19 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/06 23:53:19 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,39 +37,43 @@ static char	**parse_map(int fd, t_map_size len)
 }
 */
 
-static int	data_check(char *argv)
+static char	**data_check(char *argv, t_map_size len_map)
 {
 	char		**data;
-	t_map_size	len_map;
 
-	if (invalid_name(argv, "cub"))
-		return (FAILED);
-	len_map = check_map_size(argv);
-	if (!len_map.map_size)
-		return (0);
 	data = ingest_file(argv, len_map);
 	if (!data)
-		return (0);
-	ft_split_free(data, len_map.map_size + 7);
-	if (invalid_parameters(argv))
-		return (FAILED);
+		return (NULL);
+	if (invalid_parameters(data, len_map))
+	{
+		ft_split_free(data, len_map.control);
+		return (NULL);
+	}
 	printf("Cub3D: Parameters Accepted.\n");
-	if (invalid_content(argv))
-		return (FAILED);
+	if (invalid_content(data, len_map))
+	{
+		ft_split_free(data, len_map.control);
+		return (NULL);
+	}
 	printf("Cub3D: Parameter Values Accepted.\n");
-	return (SUCESS);
+	return (data);
 }
 
 t_scene	*parser(char *argv)
 {
-	int			fd;
+	char		**data;
 	t_scene		*scene;
+	t_map_size	len_map;
 
-	if (data_check(argv))
+	if (invalid_name(argv, "cub"))
 		return (NULL);
-	fd = get_file(argv);
-	if (fd <= 0)
+	len_map = check_map_size(argv);
+	if (!len_map.map_size)
 		return (NULL);
+	data = data_check(argv, len_map);
+	if (!data)
+		return (NULL);
+	ft_split_free(data, len_map.control);
 	scene = NULL;
 	return (scene);
 }

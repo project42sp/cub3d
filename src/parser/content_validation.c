@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 00:22:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/25 21:58:41 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/07 00:00:59 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int	invalid_param_content(char **split)
 		if (new_line)
 			new_line[0] = '\0';
 		if (invalid_name(split[1], "xpm"))
+		{
 			return (FAILED);
+		}
 		temp_fd = get_file(split[1]);
 		if (temp_fd <= 0)
 		{
@@ -64,10 +66,8 @@ int	invalid_param_content(char **split)
 		close(temp_fd);
 	}
 	else if (!ft_strncmp(split[0], "F", 2) || !ft_strncmp(split[0], "C", 2))
-	{
 		if (invalid_rgb(split[1]))
 			return (FAILED);
-	}
 	return (SUCESS);
 }
 
@@ -96,37 +96,28 @@ int	line_check_invalid(char **split)
 	return (err);
 }
 
-int	invalid_content(char *argv)
+int	invalid_content(char **data, t_map_size len)
 {
-	int		fd;
-	char	*line;
-	char	**split;
+	char **split;
 
-	fd = get_file(argv);
-	if (fd <= 0)
-		return (FAILED);
-	line = get_next_line(fd);
-	while (line)
+	len.index = 0;
+	while (len.index < len.control)
 	{
-		if (ismap(line))
-		{
-			free(line);
+		if (ismap(data[len.index]))
 			break ;
-		}
-		if (!empty_line(line))
+		if (!empty_line(data[len.index]))
 		{
-			split = ft_split(line, ' ');
+			split = ft_split(data[len.index], ' ');
 			if (!split)
 			{
-				free(line);
 				perror("Error: ");
 				return (FAILED);
 			}
 			if (line_check_invalid(split))
 				return (FAILED);
+			split = NULL;
 		}
-		free(line);
-		line = get_next_line(fd);
+		len.index++;
 	}
 	printf("Cub3d: Finish parameter check.\n");
 	return (SUCESS);

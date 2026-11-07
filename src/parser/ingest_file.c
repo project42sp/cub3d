@@ -1,4 +1,16 @@
-# include "../../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ingest_file.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/06 23:14:20 by buehara           #+#    #+#             */
+/*   Updated: 2026/11/06 23:14:49 by buehara          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/cub3d.h"
 
 char	**clean_gnl(int fd, t_map_size map_size)
 {
@@ -10,19 +22,16 @@ char	**clean_gnl(int fd, t_map_size map_size)
 	if (!data)
 		return (NULL);
 	idx = 0;
-	while (idx < map_size.map_size + 6)
+	line = get_next_line(fd);
+	while (line && idx < map_size.map_size + 6)
 	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			ft_split_free(data, map_size.map_size + 7);
-			return (NULL);
-		}
 		if (!empty_line(line))
 			data[idx++] = line;
 		else
 			free(line);
+		line = get_next_line(fd);
 	}
+	data[idx] = NULL;
 	return (data);
 }
 

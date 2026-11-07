@@ -6,26 +6,35 @@ static void	valid_parameter_simple(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.valid_reference_map.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_false(invalid_content(filename));
+	assert_false(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_texture_path(void **state)
 {
 	(void)state;
 
-	char	*filename = "./maps/map.invalid_texture_path.cub";
+	char	*filename = "./maps/map.invalid_path_texture.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_texture_format(void **state)
 {
 	(void)state;
 
-	char	*filename = "./maps/map.invalid_texture_format.cub";
+	char	*filename = "./maps/map.invalid_texture_fileformat.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_color_format(void **state)
@@ -33,8 +42,11 @@ static void	invalid_color_format(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_color_format.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_color_range(void **state)
@@ -42,8 +54,11 @@ static void	invalid_color_range(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_color_range.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_color_range_negative(void **state)
@@ -52,7 +67,11 @@ static void	invalid_color_range_negative(void **state)
 
 	char	*filename = "./maps/map.invalid_color_range_negative.cub";
 
-	assert_true(invalid_content(filename));
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
+
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_color_paramn_amount_over(void **state)
@@ -60,8 +79,11 @@ static void	invalid_color_paramn_amount_over(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_color_paramn_amount_over.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 static void	invalid_color_paramn_amount_fewer(void **state)
@@ -69,8 +91,11 @@ static void	invalid_color_paramn_amount_fewer(void **state)
 	(void)state;
 
 	char	*filename = "./maps/map.invalid_color_paramn_amount_fewer.cub";
+	t_map_size	len_map = check_map_size(filename);
+	char	**data = ingest_file(filename, len_map);
 
-	assert_true(invalid_content(filename));
+	assert_true(invalid_content(data, len_map));
+	ft_split_free(data, len_map.control);
 }
 
 int	main(void)

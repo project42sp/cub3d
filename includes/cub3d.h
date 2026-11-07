@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/04 00:21:16 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/06 23:22:18 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ int			invalid_name(char *filename, char *file_format);
 t_map_size	check_map_size(char *argv);
 
 // parameter_check.c
-int			invalid_parameters(char *argv);
+int			invalid_parameters(char **data, t_map_size len);
 
 // content_validation.c
-int			invalid_content(char *argv);
+int			invalid_content(char **data, t_map_size len);
 
 // ingest_file.c
 char		**ingest_file(char *argv, t_map_size map_size);
