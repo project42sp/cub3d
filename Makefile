@@ -75,7 +75,7 @@ $(LIBCORE): $(LIB_OBJS)
 
 $(TEST_BINS): build/%: src/tests/%.c $(LIBCORE) $(LIBFT)
 	@mkdir -p $(TEST_OBJ_DIR)
-	$(CC) $(CFLAGS_TEST) $< $(LIBCORE) $(LIBFT) $(LDFLAGS) $(TEST_LIBS) $(LDLIBS) -o $@
+	$(CC) $(CFLAGS_TEST) $< $(LIBCORE) $(LIBFT) $(LDFLAGS) $(TEST_LIBS) $(LDLIBS) $(MLX) -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
 unit-tests: $(TEST_BINS)
 	@echo $(TEST_BINS)
