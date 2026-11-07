@@ -22,6 +22,7 @@ SRC_FILES	=	main.c	\
 				graphic_module/render_player.c \
 				graphic_module/render_direction.c \
 				graphic_module/draw_functions.c \
+				graphic_module/render_wall.c \
 				graphic_module/render.c
 
 SRC_DIR = src

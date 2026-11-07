@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 03:17:28 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 15:30:22 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,7 @@ void	draw_tile(t_data *image_obj, int y, int x, int color)
 	}
 }
 
-void	initialize_camera(t_scene *scene)
-{
-	scene->camera.pos_x = 2.5;
-	scene->camera.pos_y = 2.5;
-	scene->camera.dir_x = 1.0;
-	scene->camera.dir_y = 0.0;
-	scene->camera.plane_x = 0.0;
-	scene->camera.plane_y = 0.42;
-}
-
-int	dda(t_scene *scene, double dir_x, double dir_y)
+double	dda(t_scene *scene, double dir_x, double dir_y)
 {
 	t_ray	ray;
 
@@ -92,28 +82,22 @@ int	dda(t_scene *scene, double dir_x, double dir_y)
 	return (ray.perp_dist);
 }
 
-// Must to do:
-// Every column of screen:
-//		Initialize ray  [x]
-//		throw ray		[x]
-//		calculate distance [ ]
-//		render wall height [ ]
 void	render(t_scene *scene)
 {
 	int		x;
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	int		perp_dist;
+	double	perp_dist;
 
 	x = 0;
-	initialize_camera(scene);
 	while (x < WIDTH)
 	{
 		camera_x = 2.0 * x / (double)WIDTH - 1.0;
 		ray_dir_x = scene->camera.dir_x + scene->camera.plane_x * camera_x;
 		ray_dir_y = scene->camera.dir_y + scene->camera.plane_y * camera_x;
 		perp_dist = dda(scene, ray_dir_x, ray_dir_y);
+		draw_wall(scene, (int)(HEIGHT / perp_dist), x);
 		x++;
 	}
 }
