@@ -73,11 +73,11 @@ $(LIBCORE): $(LIB_OBJS)
 	@mkdir -p $(TEST_OBJ_DIR)
 	ar rcs $@ $^
 
-$(TEST_BINS): build/%: src/tests/%.c $(LIBCORE) $(LIBFT)
+$(TEST_BINS): build/%: src/tests/%.c $(LIBCORE) $(LIBFT) $(MLX)
 	@mkdir -p $(TEST_OBJ_DIR)
 	$(CC) $(CFLAGS_TEST) $< $(LIBCORE) $(LIBFT) $(LDFLAGS) $(TEST_LIBS) $(LDLIBS) $(MLX) -o $@
 
-unit-tests: $(TEST_BINS)
+unit-tests: $(MLX) $(TEST_BINS)
 	@echo $(TEST_BINS)
 	@test -n "$(TEST_BINS)" || { echo "no tests found"; exit 1; }
 	@fail=0;	\
