@@ -16,6 +16,7 @@ SRC_FILES	=	main.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
 				game_module/exit_game.c			\
+				game_module/game_loop.c			\
 				graphic_module/graphic_config.c \
 				graphic_module/render_map.c \
 				graphic_module/render_player.c \
