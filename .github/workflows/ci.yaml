@@ -56,4 +56,5 @@ jobs:
           sudo ./scripts/cmocka_install.sh
           sudo ldconfig
           sudo apt install libcmocka0
+          make
           make unit-tests
