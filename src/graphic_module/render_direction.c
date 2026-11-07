@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 17:36:27 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/03 01:08:59 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:28:45 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static	t_pos	end_position_coords(t_pos init_pos, t_scene *scene)
 {
 	t_pos	pos;
 
-	pos.x = init_pos.x + scene->player.dir_x * 32;
-	pos.y = init_pos.y + scene->player.dir_y * 32;
+	pos.x = init_pos.x + scene->camera.dir_x * 32;
+	pos.y = init_pos.y + scene->camera.dir_y * 32;
 	return (pos);
 }
 
@@ -25,8 +25,8 @@ static	t_pos	init_position_coords(t_scene *scene)
 {
 	t_pos	pos;
 
-	pos.x = scene->player.x * 16;
-	pos.y = scene->player.y * 16;
+	pos.x = floor(scene->camera.pos_x * 16);
+	pos.y = floor(scene->camera.pos_y * 16);
 	return (pos);
 }
 
