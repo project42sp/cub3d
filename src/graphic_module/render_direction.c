@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 17:36:27 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 13:28:45 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:22:26 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	render_direction(t_scene *scene)
 
 	init_pos = init_position_coords(scene);
 	end_pos = end_position_coords(init_pos, scene);
-	delta.x = abs(end_pos.x - init_pos.x);
-	delta.y = abs(end_pos.y - init_pos.y);
+	delta.x = abs((int)(end_pos.x - init_pos.x));
+	delta.y = abs((int)(end_pos.y - init_pos.y));
 	bresengam(init_pos, end_pos, delta, scene);
 }
 
