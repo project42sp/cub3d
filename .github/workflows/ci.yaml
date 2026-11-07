@@ -46,6 +46,12 @@ jobs:
 
       - name: run unit tests
         run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libx11-dev \
+            libxext-dev \
+            libbsd-dev \
+            zlib1g-dev
           chmod +x ./scripts/cmocka_install.sh
           sudo ./scripts/cmocka_install.sh
           sudo ldconfig
