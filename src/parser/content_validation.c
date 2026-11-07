@@ -6,11 +6,28 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 00:22:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/07 00:46:45 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/07 01:04:07 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	invalid_rgb_values(char **colors, int len)
+{
+	int	idx;
+
+	idx = 0;
+	while (idx < len)
+	{
+		if (ft_atoi(colors[idx]) < 0 || ft_atoi(colors[idx]) > 255)
+		{
+			printf("Error: Color outside of allowed range (0,255)\n");
+			return (FAILED);
+		}
+		idx++;
+	}
+	return (SUCESS);
+}
 
 int	invalid_rgb(char *rgb)
 {
@@ -22,18 +39,15 @@ int	invalid_rgb(char *rgb)
 		return (FAILED);
 	len = 0;
 	while (colors[len])
-	{
-		if (ft_atoi(colors[len]) < 0 || ft_atoi(colors[len]) > 255)
-		{
-			printf("Error: Color outside of allowed range (0,255)\n");
-			ft_split_free(colors, len);
-			return (FAILED);
-		}
 		len++;
-	}
 	if (len > 3)
 	{
 		printf("Error: Found more than 3 values for RGB.\n");
+		ft_split_free(colors, len);
+		return (FAILED);
+	}
+	if (invalid_rgb_values(colors, len))
+	{
 		ft_split_free(colors, len);
 		return (FAILED);
 	}
