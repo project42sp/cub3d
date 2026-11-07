@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 15:16:56 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:22:57 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ typedef struct s_camera
 
 typedef struct s_pos
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_pos;
 
 typedef struct s_input
@@ -131,12 +131,9 @@ typedef struct s_data
 
 typedef struct s_ray
 {
-	double	dir_x;
-	double	dir_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
+	t_pos	dir;
+	t_pos	delta_dist;
+	t_pos	side_dist;
 	double	perp_dist;
 	int		map_x;
 	int		map_y;
