@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 16:56:37 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/08 01:56:24 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ t_scene		*init_map(void);
 void		key_handler(t_scene *scene);
 int			key_press(int keycode, t_scene *scene);
 int			key_release(int keycode, t_scene *scene);
-int			key_action(t_scene *scene);
+int			key_action(t_scene *scene, double dt);
 void		print_inputs(t_input inputs);
 
 // Game Module Functions
