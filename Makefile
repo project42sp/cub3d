@@ -20,7 +20,13 @@ SRC_FILES	=	main.c	\
 				input_module/key_register.c \
 				input_module/key_action.c		\
 				game_module/exit_game.c			\
-				graphic_module/graphic_config.c
+				game_module/game_loop.c			\
+				graphic_module/graphic_config.c \
+				graphic_module/render_map.c \
+				graphic_module/render_player.c \
+				graphic_module/render_direction.c \
+				graphic_module/draw_functions.c \
+				graphic_module/render.c
 
 SRC_DIR = src
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -71,11 +77,11 @@ $(LIBCORE): $(LIB_OBJS)
 	@mkdir -p $(TEST_OBJ_DIR)
 	ar rcs $@ $^
 
-$(TEST_BINS): build/%: src/tests/%.c $(LIBCORE) $(LIBFT)
+$(TEST_BINS): build/%: src/tests/%.c $(LIBCORE) $(LIBFT) $(MLX)
 	@mkdir -p $(TEST_OBJ_DIR)
-	$(CC) $(CFLAGS_TEST) $< $(LIBCORE) $(LIBFT) $(LDFLAGS) $(TEST_LIBS) $(LDLIBS) -o $@
+	$(CC) $(CFLAGS_TEST) $< $(LIBCORE) $(LIBFT) $(LDFLAGS) $(TEST_LIBS) $(LDLIBS) $(MLX) -o $@ -Lminilibx -lmlx -lXext -lX11 -lm -lz
 
-unit-tests: $(TEST_BINS)
+unit-tests: $(MLX) $(TEST_BINS)
 	@echo $(TEST_BINS)
 	@test -n "$(TEST_BINS)" || { echo "no tests found"; exit 1; }
 	@fail=0;	\
