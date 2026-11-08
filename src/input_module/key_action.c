@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:23:30 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 02:44:12 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:02:13 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,58 @@ static void	rotate_camera(t_scene *scene, int side, double dt)
 		+ scene->camera.plane_y * cos(rotspeed * side);
 }
 
+static void	walk_lateral(t_scene *scene, int side, double dt)
+{
+	t_pos	walk_vector;
+	int		x_map;
+	int		y_map;
+	double	movespeed;
+
+	movespeed = 3 * dt;
+	walk_vector.x = -scene->camera.dir_y * side ;
+	walk_vector.y = scene->camera.dir_x * side;
+	x_map = (int)(scene->camera.pos_x + walk_vector.x * movespeed);
+	y_map = (int)(scene->camera.pos_y + walk_vector.y * movespeed);
+	if (scene->map[(int)scene->camera.pos_y][x_map] == '0'
+		|| check_camera_char(scene->map[(int)scene->camera.pos_y][x_map]))
+		scene->camera.pos_x += walk_vector.x * movespeed;
+	if (scene->map[y_map][(int)scene->camera.pos_x] == '0'
+	|| check_camera_char(scene->map[y_map][(int)scene->camera.pos_x]))
+		scene->camera.pos_y += walk_vector.y * movespeed;
+}
+
 static void	move_forward(t_scene *scene, double dt)
 {
 	int		x_map;
 	int		y_map;
 	double	movespeed;
 
-	movespeed = 1 * dt;
+	movespeed = 3 * dt;
 	x_map = (int)(scene->camera.pos_x + scene->camera.dir_x * movespeed);
 	y_map = (int)(scene->camera.pos_y + scene->camera.dir_y * movespeed);
-	scene->map[(int)scene->camera.pos_x][(int)scene->camera.pos_y] = '0';
-	if (scene->map[x_map][(int)scene->camera.pos_y] == '0')
+	if (scene->map[(int)scene->camera.pos_y][x_map] == '0'
+		|| check_camera_char(scene->map[(int)scene->camera.pos_y][x_map]))
 		scene->camera.pos_x += scene->camera.dir_x * movespeed;
-	if (scene->map[(int)scene->camera.pos_x][y_map] == '0')
+	if (scene->map[y_map][x_map] == '0'
+	|| check_camera_char(scene->map[y_map][(int)scene->camera.pos_x]))
 		scene->camera.pos_y += scene->camera.dir_y * movespeed;
+}
+
+static void	move_backward(t_scene *scene, double dt)
+{
+	int		x_map;
+	int		y_map;
+	double	movespeed;
+
+	movespeed = 3 * dt;
+	x_map = (int)(scene->camera.pos_x - scene->camera.dir_x * movespeed);
+	y_map = (int)(scene->camera.pos_y - scene->camera.dir_y * movespeed);
+	if (scene->map[(int)scene->camera.pos_y][x_map] == '0'
+		|| check_camera_char(scene->map[(int)scene->camera.pos_y][x_map]))
+		scene->camera.pos_x -= scene->camera.dir_x * movespeed;
+	if (scene->map[y_map][x_map] == '0'
+	|| check_camera_char(scene->map[y_map][(int)scene->camera.pos_x]))
+		scene->camera.pos_y -= scene->camera.dir_y * movespeed;
 }
 
 int	key_action(t_scene *scene, double dt)
@@ -57,5 +95,11 @@ int	key_action(t_scene *scene, double dt)
 		rotate_camera(scene, 1, dt);
 	if (scene->inputs.w)
 		move_forward(scene, dt);
+	if (scene->inputs.s)
+		move_backward(scene, dt);
+	if (scene->inputs.a)
+		walk_lateral(scene, 1, dt);
+	if (scene->inputs.d)
+		walk_lateral(scene, -1, dt);
 	return (0);
 }
