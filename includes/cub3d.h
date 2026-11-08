@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 02:06:37 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/08 19:57:23 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,10 @@ char		**ingest_file(char *argv, t_map_size map_size);
 // map_validation.c 
 int			invalid_map(char **data, t_map_size len);
 t_camera	get_player_coord(char **map);
-char		**extract_map(char **map, t_map_size len);
+
+// flood_fill.c
+int			invalid_wall_check(char **map, t_map_size len, t_camera cam);
+char		**extract_map(char **data, t_map_size len);
 
 // parser_utils.c
 int			empty_line(char *line);

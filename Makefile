@@ -11,7 +11,8 @@ SRC_FILES	=	main.c	\
 				parser/parser_utils.c	\
 				parser/invalid_name.c	\
 				parser/map_validation.c	\
-				parser/ingest_file.c	\
+				parser/flood_fill.c			\
+				parser/ingest_file.c		\
 				parser/map_size_check.c		\
 				parser/parameter_check.c	\
 				parser/content_validation.c	\
