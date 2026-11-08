@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/07 01:15:06 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/08 19:36:11 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static char	**parse_map(int fd, t_map_size len)
 	char	*line;
 	char	**map;
 
-	(void)map;
-	(void)parsed_map;
 	parsed_map = FALSE;
 	line = get_next_line(fd);
 	while (line)
@@ -52,12 +50,12 @@ static char	**data_check(char *argv, t_map_size len_map)
 	printf("Cub3D: Parameters Accepted.\n");
 	if (invalid_content(data, len_map))
 	{
-		ft_split_free(data, len_map.control);
+		ft_split_free(data, len_map.map_size + 6);
 		return (NULL);
 	}
 	if (invalid_map(data, len_map))
 	{
-		ft_split_free(data, len_map.control);
+		ft_split_free(data, len_map.map_size + 6);
 		return (NULL);
 	}
 	printf("Cub3D: Parameter Values Accepted.\n");
