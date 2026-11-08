@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 16:47:03 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 18:57:38 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:11:44 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void check_ray_distance(void **state)
 	double camera_x = 2.0 * center_screen / (double)WIDTH - 1.0;
 	double ray_dir_x = scene->camera.dir_x + scene->camera.plane_x * camera_x;
 	double ray_dir_y = scene->camera.dir_y + scene->camera.plane_y * camera_x;
-	double distance = dda(scene, ray_dir_x, ray_dir_y);
-	assert_int_equal((int)distance, 4);
+	t_ray ray = dda(scene, ray_dir_x, ray_dir_y);
+	assert_int_equal((int)ray.perp_dist, 4);
 }
 
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 17:02:58 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:03:20 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	scene = ft_calloc(1, sizeof(t_scene));
 	graphic_config(&scene);
 	key_handler(scene);
+	scene->last_time_render = get_time();
 	mlx_loop_hook(scene->mlx_instance, game_loop, scene);
 	mlx_loop(scene->mlx_instance);
 	exit_scene(scene);
