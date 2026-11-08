@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/06 23:22:18 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/08 02:06:37 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,21 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef struct s_coord
+typedef struct s_camera
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_camera;
+
+typedef struct s_pos
 {
 	double	x;
 	double	y;
-	double	z;
-}	t_coord;
+}	t_pos;
 
 typedef struct s_input
 {
@@ -99,21 +108,35 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_ray
+{
+	t_pos	dir;
+	t_pos	delta_dist;
+	t_pos	side_dist;
+	double	perp_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		hit;
+}	t_ray;
+
 typedef struct s_scene
 {
-	char	**map;
-	t_color	floor;
-	t_color	ceil;
-	t_coord	player;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	direction;
-	void	*win;
-	void	*mlx_instance;
-	t_data	*image_obj;
-	t_input	inputs;
+	t_color		floor;
+	t_color		ceil;
+	t_camera	camera;
+	char		**map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	void		*win;
+	void		*mlx_instance;
+	t_data		*image_obj;
+	t_input		inputs;
+	long		last_time_render;
 }	t_scene;
 
 // Parser functions
@@ -132,8 +155,16 @@ int			invalid_parameters(char **data, t_map_size len);
 // content_validation.c
 int			invalid_content(char **data, t_map_size len);
 
+// map_validation.c
+int			invalid_map(char **data, t_map_size len);
+
 // ingest_file.c
 char		**ingest_file(char *argv, t_map_size map_size);
+
+// map_validation.c 
+int			invalid_map(char **data, t_map_size len);
+t_camera	get_player_coord(char **map);
+char		**extract_map(char **map, t_map_size len);
 
 // parser_utils.c
 int			empty_line(char *line);
