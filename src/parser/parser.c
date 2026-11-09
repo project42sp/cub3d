@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 01:01:29 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:49:28 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,10 @@ t_scene	*parser(char *argv)
 	if (!scene)
 	{
 		printf("Cub3D: scene was not created.\n");
-		ft_split_free(data, len_map.control);
+		ft_split_free(data, len_map.map_size + 6);
 		return (NULL);
 	}
 	printf("Cub3D: scene created.");
-	ft_split_free(data, len_map.control);
+	ft_split_free(data, len_map.map_size + 6);
 	return (scene);
 }

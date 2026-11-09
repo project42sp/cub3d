@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 19:45:49 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 16:09:35 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:43:15 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ static int	flood_fill(char **map, int column, int line, t_map_size len)
 	if (map[line][column] == '1' || map[line][column] == '2')
 		return (TRUE);
 	if (map[line][column] == '0' || ft_isspace(map[line][column]))
-	{
-		printf("Log: Painted [%02d][%02d]\n", line, column);
 		map[line][column] = '2';
-	}
 	if (!flood_fill(map, column + 1, line, len))
 		return (FALSE);
 	if (!flood_fill(map, column -1, line, len))
@@ -74,7 +71,7 @@ char	**extract_map(char **data, t_map_size len)
 	len.line_start = 6;
 	while (len.index < len.map_size)
 	{
-		map[len.index] = data[len.line_start];
+		map[len.index] = ft_strdup(data[len.line_start]);
 		len.line_start++;
 		len.index++;
 	}

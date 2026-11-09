@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/08 23:33:55 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:39:28 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_camera	init_camera(void)
 
 static void	set_player_direction(char value, t_camera *cam)
 {
-	int	fov;
+	double	fov;
 
 	if (value == 'N')
 		cam->dir_y = -1.0;
