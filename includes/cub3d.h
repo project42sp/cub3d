@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:57:23 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/08 23:15:36 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ int			invalid_content(char **data, t_map_size len);
 
 // map_validation.c
 int			invalid_map(char **data, t_map_size len);
+t_camera	init_camera(void);
 
 // ingest_file.c
 char		**ingest_file(char *argv, t_map_size map_size);

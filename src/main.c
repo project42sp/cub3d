@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/10/25 17:49:40 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 00:29:39 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@
 //     (*scene)->camera.plane_x = 0.0;
 //     (*scene)->camera.plane_y = 0.82;
 // }
+//
+void	ft_free_scene(t_scene *scene)
+{
+	int	idx;
+
+	free(scene->ea);
+	free(scene->we);
+	free(scene->no);
+	free(scene->so);
+	idx = 0;
+	while (scene->map[idx])
+		idx++;
+	ft_split_free(scene->map, idx);
+	free(scene);
+	printf("Free function done");
+}
 
 int	main(int argc, char **argv)
 {
@@ -46,11 +62,11 @@ int	main(int argc, char **argv)
 	scene = parser(argv[1]);
 	if (!scene)
 	{
-		free(scene);
+		scene = NULL;
 		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
 	}
-	scene = ft_calloc(1, sizeof(t_scene));
+	ft_free_scene(scene);
 	graphic_config(&scene);
 	key_handler(scene);
 	scene->last_time_render = get_time();

@@ -6,13 +6,13 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/08 20:25:44 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/08 23:33:55 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static t_camera	init_camera(void)
+t_camera	init_camera(void)
 {
 	t_camera	cam;
 
@@ -27,6 +27,8 @@ static t_camera	init_camera(void)
 
 static void	set_player_direction(char value, t_camera *cam)
 {
+	int	fov;
+
 	if (value == 'N')
 		cam->dir_y = -1.0;
 	else if (value == 'S')
@@ -35,6 +37,9 @@ static void	set_player_direction(char value, t_camera *cam)
 		cam->dir_x = 1.0;
 	else if (value == 'W')
 		cam->dir_x = -1.0;
+	fov = 0.42;
+	cam->plane_x = -cam->dir_y * fov;
+	cam->plane_y = cam->dir_x * fov;
 }
 
 static int	player_check(char value, t_camera *cam, int line, int column)
@@ -48,7 +53,6 @@ static int	player_check(char value, t_camera *cam, int line, int column)
 			printf("Map Error: More than one PLayer.\n");
 			return (FAILED);
 		}
-		printf("Cub3D: Found Character %c\n", value);
 		cam->pos_x = column;
 		cam->pos_y = line;
 		set_player_direction(value, cam);
@@ -108,3 +112,4 @@ int	invalid_map(char **data, t_map_size len)
 	}
 	return (SUCESS);
 }
+
