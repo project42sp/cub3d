@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:23:30 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:02:13 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:00:37 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,16 @@ int	key_action(t_scene *scene, double dt)
 	if (scene->inputs.esc)
 		exit_scene(scene);
 	if (scene->inputs.arrow_right)
-		rotate_camera(scene, -1, dt);
-	if (scene->inputs.arrow_left)
 		rotate_camera(scene, 1, dt);
+	if (scene->inputs.arrow_left)
+		rotate_camera(scene, -1, dt);
 	if (scene->inputs.w)
 		move_forward(scene, dt);
 	if (scene->inputs.s)
 		move_backward(scene, dt);
 	if (scene->inputs.a)
-		walk_lateral(scene, 1, dt);
-	if (scene->inputs.d)
 		walk_lateral(scene, -1, dt);
+	if (scene->inputs.d)
+		walk_lateral(scene, 1, dt);
 	return (0);
 }
