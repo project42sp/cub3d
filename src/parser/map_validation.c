@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 16:39:28 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:27:50 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,15 @@ int	invalid_map(char **data, t_map_size len)
 	cam = get_player_coord(map);
 	if (cam.pos_x == 0 || cam.pos_y == 0)
 	{
-		free(map);
+		ft_split_free(map, len.map_size);
 		return (FAILED);
 	}
 	if (invalid_wall_check(map, len, cam))
 	{
-		free(map);
+		ft_split_free(map, len.map_size);
 		return (FAILED);
 	}
+	ft_split_free(map, len.map_size);
 	return (SUCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 16:49:28 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:54:23 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int	extract_parameter(char *line, t_scene *scene)
 	split = ft_split(line, ' ');
 	if (!split)
 		return (FAILED);
-	if (ft_strncmp("NO", split[0], 3) && split[1])
+	if (!ft_strncmp("NO", split[0], 3) && split[1])
 		scene->no = ft_strdup(split[1]);
-	else if (ft_strncmp("WE", split[0], 3) && split[1])
+	else if (!ft_strncmp("WE", split[0], 3) && split[1])
 		scene->we = ft_strdup(split[1]);
-	else if (ft_strncmp("EA", split[0], 3) && split[1])
+	else if (!ft_strncmp("EA", split[0], 3) && split[1])
 		scene->ea = ft_strdup(split[1]);
-	else if (ft_strncmp("SO", split[0], 3) && split[1])
+	else if (!ft_strncmp("SO", split[0], 3) && split[1])
 		scene->so = ft_strdup(split[1]);
-	else if (ft_strncmp("F", split[0], 2) && split[1])
+	else if (!ft_strncmp("F", split[0], 2) && split[1])
 		scene->floor = init_color(split[1]);
-	else if (ft_strncmp("C", split[0], 2) && split[1])
+	else if (!ft_strncmp("C", split[0], 2) && split[1])
 		scene->ceil = init_color(split[1]);
 	idx = 0;
 	while (split[idx])
@@ -62,6 +62,7 @@ t_scene	*init_scene(char **data, t_map_size len)
 	t_scene		*scene;
 	t_camera	cam;
 	char		**map;
+	char		*line;
 
 	map = extract_map(data, len);
 	if (!map)
@@ -83,6 +84,8 @@ t_scene	*init_scene(char **data, t_map_size len)
 	len.index = 0;
 	while (len.index <= 6)
 	{
+		line = ft_strchr(data[len.index], '\n');
+		*line = '\0';
 		if (extract_parameter(data[len.index], scene))
 		{
 			printf("Error: Failed to extract parameter. Data %s\n", data[len.index]);

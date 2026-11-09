@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:16:44 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 16:16:32 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:44:51 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 	scene = parser(argv[1]);
 	if (!scene)
 	{
-		ft_free_scene(scene);
 		scene = NULL;
 		printf("Cub3D: Finishing program.\n");
 		return (FAILED);
