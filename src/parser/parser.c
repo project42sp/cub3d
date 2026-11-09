@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 17:56:20 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:31:48 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,58 @@ int	extract_parameter(char *line, t_scene *scene)
 	return (SUCESS);
 }
 
+int	extract_parameter_loop(char **data, t_scene *scene)
+{
+	int		len;
+	char	*line;
+
+	len = 0;
+	while (len <= 6)
+	{
+		line = ft_strchr(data[len], '\n');
+		*line = '\0';
+		if (extract_parameter(data[len], scene))
+		{
+			printf("Error: Failed to extract parameter. Data %s\n", data[len]);
+			if (scene->ea)
+			free(scene->ea);
+			if (scene->we)
+			free(scene->we);
+			if (scene->so)
+			free(scene->so);
+			if (scene->no)
+			free(scene->no);
+			free(scene);
+			return (FALSE);
+		}
+		len++;
+	}
+	return (TRUE);
+}
+
 t_scene	*init_scene(char **data, t_map_size len)
 {
 	t_scene		*scene;
 	t_camera	cam;
 	char		**map;
-	char		*line;
 
 	map = extract_map(data, len);
 	if (!map)
-	{
-		printf("Error: Failed to extract map.\n");
 		return (NULL);
-	}
 	cam = init_camera();
 	cam = get_player_coord(map);
 	scene = ft_calloc(sizeof(t_scene), 1);
 	if (!scene)
 	{
 		ft_split_free(map, len.map_size);
-		printf("Error: Failed SCENE malloc.\n");
 		return (NULL);
 	}
 	scene->map = map;
 	scene->camera = cam;
-	len.index = 0;
-	while (len.index <= 6)
+	if (extract_parameter_loop(data, scene) == FALSE)
 	{
-		line = ft_strchr(data[len.index], '\n');
-		*line = '\0';
-		if (extract_parameter(data[len.index], scene))
-		{
-			printf("Error: Failed to extract parameter. Data %s\n", data[len.index]);
-			free(scene);
-			return (NULL);
-		}
-		len.index++;
+		free(scene);
+		return (NULL);
 	}
 	return (scene);
 }
