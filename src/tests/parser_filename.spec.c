@@ -1,15 +1,13 @@
 #include "../../includes/cub3d.h"
 #include <cmocka.h>
 
-int	invalid_name(char *filename);
-
 static void	valid_name_simple(void **state)
 {
 	(void)state;
 
 	char	*filename = "map.cub";
 
-	assert_false(invalid_name(filename));
+	assert_false(invalid_name(filename, "cub"));
 }
 
 static void	valid_name_complex(void **state)
@@ -18,7 +16,7 @@ static void	valid_name_complex(void **state)
 
 	char	*filename = "map.txt.cub";
 
-	assert_false(invalid_name(filename));
+	assert_false(invalid_name(filename, "cub"));
 }
 
 static void	invalid_name_simple(void **state)
@@ -27,7 +25,7 @@ static void	invalid_name_simple(void **state)
 
 	char	*filename = "map.txt";
 
-	assert_true(invalid_name(filename));
+	assert_true(invalid_name(filename, "cub"));
 }
 
 static void	invalid_name_complex(void **state)
@@ -36,7 +34,7 @@ static void	invalid_name_complex(void **state)
 
 	char	*filename = "map.txt.json";
 
-	assert_true(invalid_name(filename));
+	assert_true(invalid_name(filename, "cub"));
 }
 
 static void	invalid_name_similar(void **state)
@@ -45,7 +43,7 @@ static void	invalid_name_similar(void **state)
 
 	char	*filename = "map.cub3d";
 
-	assert_true(invalid_name(filename));
+	assert_true(invalid_name(filename, "cub"));
 }
 
 static void	invalid_name_no_dot(void **state)
@@ -54,7 +52,7 @@ static void	invalid_name_no_dot(void **state)
 
 	char	*filename = "map";
 
-	assert_true(invalid_name(filename));
+	assert_true(invalid_name(filename, "cub"));
 }
 
 int	main(void)

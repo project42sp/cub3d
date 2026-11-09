@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:01:54 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:57:23 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ typedef struct s_scene
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		direction;
 	void		*win;
 	void		*mlx_instance;
 	t_data		*image_obj;
@@ -166,19 +165,30 @@ typedef struct s_scene
 t_scene		*parser(char *argv);
 
 // parser_invalid_name.c
-int			invalid_name(char *filename);
+int			invalid_name(char *filename, char *file_format);
 
 // parser_map_size_check.c
 t_map_size	check_map_size(char *argv);
-void		map_error(t_map_size len, char *line, int fd);
-char		*count_map_size(t_map_size *len, int fd, char *line);
-t_map_size	init_map_size(void);
 
 // parameter_check.c
-int			invalid_parameters(char *argv);
-t_param		check_param(char *line, t_param check);
-t_param		init_check_param(void);
-t_param		fill_param_check(int fd);
+int			invalid_parameters(char **data, t_map_size len);
+
+// content_validation.c
+int			invalid_content(char **data, t_map_size len);
+
+// map_validation.c
+int			invalid_map(char **data, t_map_size len);
+
+// ingest_file.c
+char		**ingest_file(char *argv, t_map_size map_size);
+
+// map_validation.c
+int			invalid_map(char **data, t_map_size len);
+t_camera	get_player_coord(char **map);
+
+// flood_fill.c
+int			invalid_wall_check(char **map, t_map_size len, t_camera cam);
+char		**extract_map(char **data, t_map_size len);
 
 // parser_utils.c
 int			empty_line(char *line);

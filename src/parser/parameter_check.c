@@ -6,32 +6,35 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 23:03:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/18 23:03:54 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/06 23:09:30 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_param	check_param(char *line, t_param check)
+static t_param	check_param(char *line, t_param check)
 {
-	if (!ft_strncmp("NO ", &line[check.index], 3))
+	if (!ft_strncmp("NO ", line, 3))
 		check.no++;
-	else if (!ft_strncmp("WE ", &line[check.index], 3))
+	else if (!ft_strncmp("WE ", line, 3))
 		check.we++;
-	else if (!ft_strncmp("SO ", &line[check.index], 3))
+	else if (!ft_strncmp("SO ", line, 3))
 		check.so++;
-	else if (!ft_strncmp("EA ", &line[check.index], 3))
+	else if (!ft_strncmp("EA ", line, 3))
 		check.ea++;
-	else if (!ft_strncmp("F ", &line[check.index], 2))
+	else if (!ft_strncmp("F ", line, 2))
 		check.floor++;
-	else if (!ft_strncmp("C ", &line[check.index], 2))
+	else if (!ft_strncmp("C ", line, 2))
 		check.ceil++;
 	else
+	{
+		printf("Cud3D: Unexpected parameter: %s", line);
 		check.ctrl++;
+	}
 	return (check);
 }
 
-t_param	init_check_param(void)
+static t_param	init_check_param(void)
 {
 	t_param	check;
 
@@ -46,35 +49,31 @@ t_param	init_check_param(void)
 	return (check);
 }
 
-t_param	fill_param_check(int fd)
+static t_param	fill_param_check(char **data, t_map_size len)
 {
-	char	*line;
+	int		idx;
 	t_param	check;
 
+	(void)len;
 	check = init_check_param();
-	line = get_next_line(fd);
-	while (line)
+	idx = 0;
+	while (data && data[check.index])
 	{
-		check.index = ignore_space(line, check.index);
-		if (ft_isalpha(line[check.index]))
-			check = check_param(line, check);
-		free(line);
-		check.index = 0;
-		line = get_next_line(fd);
+		while (ft_isspace(data[check.index][idx]))
+			idx++;
+		if (ft_isalpha(data[check.index][idx]))
+			check = check_param(&data[check.index][idx], check);
+		check.index++;
+		idx = 0;
 	}
-	close(fd);
 	return (check);
 }
 
-int	invalid_parameters(char *argv)
+int	invalid_parameters(char **data, t_map_size len)
 {
-	int		fd;
 	t_param	check;
 
-	fd = get_file(argv);
-	if (fd <= 0)
-		return (FAILED);
-	check = fill_param_check(fd);
+	check = fill_param_check(data, len);
 	if (check.ctrl)
 	{
 		printf("Cub3D: Error: Unexpected Parameter Found.\n");

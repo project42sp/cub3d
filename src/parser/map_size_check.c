@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_map_size_check.c                            :+:      :+:    :+:   */
+/*   map_size_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:22:19 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/12 01:22:21 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/19 00:36:58 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_map_size	init_map_size(void)
+static t_map_size	init_map_size(void)
 {
 	t_map_size	len;
 
@@ -23,7 +23,7 @@ t_map_size	init_map_size(void)
 	return (len);
 }
 
-char	*count_map_size(t_map_size *len, int fd, char *line)
+static char	*count_map_size(t_map_size *len, int fd, char *line)
 {
 	while (line)
 	{
@@ -39,7 +39,7 @@ char	*count_map_size(t_map_size *len, int fd, char *line)
 	return (line);
 }
 
-t_map_size	check_map_util(char *line, int fd, t_map_size len)
+static t_map_size	check_map_util(char *line, int fd, t_map_size len)
 {
 	while (line)
 	{

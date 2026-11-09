@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 21:31:58 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/12 21:32:03 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/06 23:48:08 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	empty_line(char *line)
 	while (ft_isspace(line[index]))
 		index++;
 	if (line[index] == '\n' || line[index] == '\0')
-	{
-		printf("%s\n", "Cub3D: Empty line.");
 		return (TRUE);
-	}
 	return (FALSE);
 }
 
@@ -45,7 +42,9 @@ int	ismap(char *line)
 	index = 0;
 	while (ft_isspace(line[index]))
 		index++;
-	if (ft_isalnum(line[index]))
+	if (ft_isalpha(line[index]))
+		return (FALSE);
+	if (ft_isdigit(line[index]))
 		return (TRUE);
 	return (FALSE);
 }
@@ -69,13 +68,14 @@ int	get_file(char *filename)
 	int	fd;
 
 	if (!filename)
-		return (FALSE);
+		return (0);
 	fd = 0;
+	printf("Cub3D: Opening file '%s'\n", filename);
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
 	{
 		perror("Error");
-		return (FALSE);
+		return (fd);
 	}
 	return (fd);
 }

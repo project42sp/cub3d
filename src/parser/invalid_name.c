@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_invalid_name.c                              :+:      :+:    :+:   */
+/*   invalid_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:21:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/10/12 01:22:06 by buehara          ###   ########.fr       */
+/*   Updated: 2026/10/25 20:34:45 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	invalid_name(char *filename)
+int	invalid_name(char *filename, char *file_format)
 {
 	int		index;
 	char	**name_parts;
@@ -25,7 +25,7 @@ int	invalid_name(char *filename)
 	index = 0;
 	while (name_parts[index + 1] != NULL)
 		index++;
-	if (ft_strncmp(name_parts[index], "cub", 4))
+	if (ft_strncmp(name_parts[index], file_format, ft_strlen(file_format) + 1))
 		err = FAILED;
 	ft_split_free(name_parts, index + 1);
 	if (err)
