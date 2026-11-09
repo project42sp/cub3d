@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 16:59:27 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:49:50 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,32 @@ void	draw_wall(t_scene *scene, t_ray ray, int x)
 {
 	int	start;
 	int	end;
-	int	color;
 	int	wall_height;
+	int	i;
+	int	color;
 
 	wall_height = (int)(HEIGHT / ray.perp_dist);
 	start = -wall_height / 2 + HEIGHT / 2;
 	end = wall_height / 2 + HEIGHT / 2;
-	color = GREEN;
+	i = 0;
 	if (ray.side == 1)
-		color = GREEN * 3;
+		color = GREY;
+	if (ray.side == 0)
+		color = GREY * 2;
 	if (start < 0)
 		start = 0;
 	if (end >= HEIGHT)
 		end = HEIGHT - 1;
+	while (i < start)
+		draw_pixel(scene->image_obj, x, i++, scene->ceil.hex);
 	while (start != end)
 	{
 		draw_pixel(scene->image_obj, x, start, color);
 		start++;
 	}
+	i = end++;
+	while (i <= HEIGHT)
+		draw_pixel(scene->image_obj, x, i++, scene->floor.hex);
 }
 
 t_pos	init_side_dist(t_scene *scene, t_ray ray)

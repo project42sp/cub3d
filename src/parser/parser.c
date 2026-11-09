@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 17:54:23 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:56:20 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ t_color	init_color(char *rgb)
 	color.r = 0;
 	color.g = 0;
 	color.b = 0;
+	color.hex = 0;
 	split = ft_split(rgb, ',');
 	if (!split)
 		return (color);
 	color.r = ft_atoi(split[0]);
 	color.g = ft_atoi(split[1]);
 	color.b = ft_atoi(split[2]);
+	color.hex = (color.r << 16) | (color.g << 8) | color.b;
 	ft_split_free(split, 3);
 	return (color);
 }

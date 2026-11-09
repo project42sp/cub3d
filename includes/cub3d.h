@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 23:15:36 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:35:04 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define BLACK 0x00000000
 # define GREY 0xD3D3D3
 # define WHITE 0xFFFFFF
-# define GREEN 0x39FF14
+# define GREEN 3800852
 
 // Parser MAP structs
 enum e_colortype
@@ -77,6 +77,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	hex;
 }	t_color;
 
 typedef struct s_camera
