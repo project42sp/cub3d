@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 19:45:49 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/08 20:26:28 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:09:35 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	**map_copy(char **org, t_map_size len)
 static int	flood_fill(char **map, int column, int line, t_map_size len)
 {
 	if (line >= len.map_size || column >= (int)ft_strlen(map[line])
-		|| line == 0 || column == 0)
+		|| line < 0 || column < 0)
 	{
 		printf("Cub3D: Open path on map: Coord[%02d][%02d]\n", line, column);
 		return (FALSE);
@@ -45,7 +45,10 @@ static int	flood_fill(char **map, int column, int line, t_map_size len)
 	if (map[line][column] == '1' || map[line][column] == '2')
 		return (TRUE);
 	if (map[line][column] == '0' || ft_isspace(map[line][column]))
+	{
+		printf("Log: Painted [%02d][%02d]\n", line, column);
 		map[line][column] = '2';
+	}
 	if (!flood_fill(map, column + 1, line, len))
 		return (FALSE);
 	if (!flood_fill(map, column -1, line, len))
