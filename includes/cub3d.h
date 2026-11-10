@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 21:29:22 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 23:30:01 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 // CONFIG VARS
 # define HEIGHT 768
-# define WIDTH 1024
+# define WIDTH 1280
 
 // COLORS
 # define RED 0x00FF0000
@@ -125,6 +125,8 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -157,6 +159,7 @@ typedef struct s_scene
 	void		*win;
 	void		*mlx_instance;
 	t_data		*image_obj;
+	t_texture	*texture;
 	t_input		inputs;
 	long		last_time_render;
 }	t_scene;
