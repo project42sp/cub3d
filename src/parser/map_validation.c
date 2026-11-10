@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 17:27:50 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 18:35:23 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,3 @@ int	invalid_map(char **data, t_map_size len)
 	ft_split_free(map, len.map_size);
 	return (SUCESS);
 }
-

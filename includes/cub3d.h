@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 18:07:01 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 18:46:53 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ int			ignore_space(char *line, int index);
 int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
+t_color		init_color(char *rgb);
 
 // Input Module Functions
 void		key_handler(t_scene *scene);

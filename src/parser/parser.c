@@ -6,31 +6,11 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 22:31:59 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 18:31:48 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 18:46:27 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-t_color	init_color(char *rgb)
-{
-	t_color	color;
-	char	**split;
-
-	color.r = 0;
-	color.g = 0;
-	color.b = 0;
-	color.hex = 0;
-	split = ft_split(rgb, ',');
-	if (!split)
-		return (color);
-	color.r = ft_atoi(split[0]);
-	color.g = ft_atoi(split[1]);
-	color.b = ft_atoi(split[2]);
-	color.hex = (color.r << 16) | (color.g << 8) | color.b;
-	ft_split_free(split, 3);
-	return (color);
-}
 
 int	extract_parameter(char *line, t_scene *scene)
 {
@@ -73,13 +53,13 @@ int	extract_parameter_loop(char **data, t_scene *scene)
 		{
 			printf("Error: Failed to extract parameter. Data %s\n", data[len]);
 			if (scene->ea)
-			free(scene->ea);
+				free(scene->ea);
 			if (scene->we)
-			free(scene->we);
+				free(scene->we);
 			if (scene->so)
-			free(scene->so);
+				free(scene->so);
 			if (scene->no)
-			free(scene->no);
+				free(scene->no);
 			free(scene);
 			return (FALSE);
 		}
