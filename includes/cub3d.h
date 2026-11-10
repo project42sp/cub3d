@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 18:46:53 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 21:29:22 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define K_ARROW_RIGHT 65363
 
 // CONFIG VARS
-# define HEIGHT 720
-# define WIDTH 1280
+# define HEIGHT 768
+# define WIDTH 1024
 
 // COLORS
 # define RED 0x00FF0000

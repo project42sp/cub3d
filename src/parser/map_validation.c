@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 18:35:23 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:53:25 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_player_direction(char value, t_camera *cam)
 		cam->dir_x = 1.0;
 	else if (value == 'W')
 		cam->dir_x = -1.0;
-	fov = 0.42;
+	fov = 0.88;
 	cam->plane_x = -cam->dir_y * fov;
 	cam->plane_y = cam->dir_x * fov;
 }

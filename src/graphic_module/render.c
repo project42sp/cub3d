@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 18:49:08 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 19:34:23 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	draw_wall(t_scene *scene, t_ray ray, int x)
 	int	end;
 	int	wall_height;
 	int	i;
-	int	color;
 
 	wall_height = (int)(HEIGHT / ray.perp_dist);
 	start = -wall_height / 2 + HEIGHT / 2;
@@ -31,14 +30,16 @@ void	draw_wall(t_scene *scene, t_ray ray, int x)
 		end = HEIGHT - 1;
 	while (i < start)
 		draw_pixel(scene->image_obj, x, i++, scene->ceil.hex);
+	i = end;
+	while (i < HEIGHT)
+		draw_pixel(scene->image_obj, x, i++, scene->floor.hex);
 	while (start != end)
 	{
-		draw_pixel(scene->image_obj, x, start, scene->ceil.hex);
-		start++;
+		if (ray.side == 1)
+			draw_pixel(scene->image_obj, x, start++, GREY * 2);
+		else
+			draw_pixel(scene->image_obj, x, start++, GREY);
 	}
-	i = end++;
-	while (i <= HEIGHT)
-		draw_pixel(scene->image_obj, x, i++, scene->floor.hex);
 }
 
 t_pos	init_side_dist(t_scene *scene, t_ray ray)
