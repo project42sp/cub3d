@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 16:59:27 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/12 16:37:56 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_wall(t_scene *scene, t_ray ray, int x)
 		end = HEIGHT - 1;
 	while (start != end)
 	{
-		draw_pixel(scene->image_obj, x, start, color);
+		draw_pixel(scene->image_obj, x, start, color / ray.perp_dist);
 		start++;
 	}
 }
