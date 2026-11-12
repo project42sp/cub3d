@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:57:23 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 21:29:22 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@
 # define K_ARROW_RIGHT 65363
 
 // CONFIG VARS
-# define HEIGHT 720
-# define WIDTH 1280
+# define HEIGHT 768
+# define WIDTH 1024
 
 // COLORS
 # define RED 0x00FF0000
 # define BLACK 0x00000000
 # define GREY 0xD3D3D3
 # define WHITE 0xFFFFFF
-# define GREEN 0x39FF14
+# define GREEN 3800852
 
 // Parser MAP structs
 enum e_colortype
@@ -77,6 +77,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	hex;
 }	t_color;
 
 typedef struct s_camera
@@ -178,6 +179,7 @@ int			invalid_content(char **data, t_map_size len);
 
 // map_validation.c
 int			invalid_map(char **data, t_map_size len);
+t_camera	init_camera(void);
 
 // ingest_file.c
 char		**ingest_file(char *argv, t_map_size map_size);
@@ -196,6 +198,7 @@ int			ignore_space(char *line, int index);
 int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
+t_color		init_color(char *rgb);
 
 // Input Module Functions
 void		key_handler(t_scene *scene);
