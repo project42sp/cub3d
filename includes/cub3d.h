@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 21:29:22 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/14 23:37:48 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,4 +228,7 @@ t_ray		dda(t_scene *scene, double dir_x, double dir_y);
 t_ray		init_ray(t_scene *scene, double dir_x, double dir_y);
 void		draw_wall(t_scene *scene, t_ray ray, int x);
 void		render(t_scene *scene);
+
+// Bonus Functions
+int			game_loop_bonus(t_scene *scene);
 #endif
