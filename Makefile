@@ -23,8 +23,6 @@ SRC_FILES	= parser/parser.c	\
 						game_module/exit_game.c			\
 						game_module/game_loop.c			\
 						graphic_module/graphic_config.c \
-						graphic_module/render_map.c \
-						graphic_module/render_player.c \
 						graphic_module/render_direction.c \
 						graphic_module/draw_functions.c \
 						graphic_module/render.c
