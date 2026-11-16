@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 22:45:43 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/14 23:36:36 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/15 17:18:32 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	game_loop_bonus(t_scene *scene)
 	key_action(scene, dt);
 	clear_frame(scene);
 	render(scene);
+	render_hud(scene);
 	mlx_put_image_to_window(scene->mlx_instance,
 		scene->win, scene->image_obj->img, 0, 0);
 	scene->last_time_render = current;

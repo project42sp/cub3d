@@ -6,8 +6,13 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 22:43:49 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/14 22:44:00 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/15 10:28:52 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
+
+void	render_hud(t_scene *scene)
+{
+	render_map_hud(scene);
+}
