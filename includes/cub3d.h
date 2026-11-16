@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/14 23:37:48 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/15 20:21:51 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,12 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_vec2
+{
+	int	x;
+	int	y;
+}	t_vec2;
+
 typedef struct s_ray
 {
 	t_pos	dir;
@@ -217,7 +223,7 @@ void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
 void		draw_direction_line(t_data *image_obj, t_pos pos, int color);
 void		render_map(t_scene *scene);
-void		draw_tile(t_data *image_obj, int y, int x, int color);
+void		draw_tile(t_data *image_obj, t_vec2 pos, int color, int size);
 void		clear_frame(t_scene *scene);
 void		render(t_scene *scene);
 void		render_player(t_scene *scene);
@@ -231,4 +237,7 @@ void		render(t_scene *scene);
 
 // Bonus Functions
 int			game_loop_bonus(t_scene *scene);
+void		render_map_hud(t_scene *scene);
+void		render_hud(t_scene *scene);
+void		render_grid_map(t_scene *scene, int map_w, int map_h);
 #endif
