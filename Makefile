@@ -36,9 +36,9 @@ SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 
 BONUS_FILES = main_bonus.c \
 							game_loop_bonus.c \
-							hud_module/render_player_hud.c \
-							hud_module/render_map_hud.c \
-							hud_module/render_rays_hud.c \
+							hud_module/minimap/render_player_hud.c \
+							hud_module/minimap/render_map_hud.c \
+							hud_module/minimap/render_rays_hud.c \
 							hud_module/render_hud.c
 
 BONUS_SRC = bonus/src
