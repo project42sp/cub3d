@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:57:23 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/15 20:21:51 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@
 # define K_ARROW_RIGHT 65363
 
 // CONFIG VARS
-# define HEIGHT 720
-# define WIDTH 1280
+# define HEIGHT 768
+# define WIDTH 1024
 
 // COLORS
 # define RED 0x00FF0000
 # define BLACK 0x00000000
 # define GREY 0xD3D3D3
 # define WHITE 0xFFFFFF
-# define GREEN 0x39FF14
+# define GREEN 3800852
 
 // Parser MAP structs
 enum e_colortype
@@ -77,6 +77,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	hex;
 }	t_color;
 
 typedef struct s_camera
@@ -129,6 +130,12 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_vec2
+{
+	int	x;
+	int	y;
+}	t_vec2;
+
 typedef struct s_ray
 {
 	t_pos	dir;
@@ -178,6 +185,7 @@ int			invalid_content(char **data, t_map_size len);
 
 // map_validation.c
 int			invalid_map(char **data, t_map_size len);
+t_camera	init_camera(void);
 
 // ingest_file.c
 char		**ingest_file(char *argv, t_map_size map_size);
@@ -196,6 +204,7 @@ int			ignore_space(char *line, int index);
 int			ismap(char *line);
 int			get_file(char *filename);
 t_scene		*init_map(void);
+t_color		init_color(char *rgb);
 
 // Input Module Functions
 void		key_handler(t_scene *scene);
@@ -214,7 +223,7 @@ void		graphic_config(t_scene **scene);
 void		draw_pixel(t_data *image_obj, int x, int y, int color);
 void		draw_direction_line(t_data *image_obj, t_pos pos, int color);
 void		render_map(t_scene *scene);
-void		draw_tile(t_data *image_obj, int y, int x, int color);
+void		draw_tile(t_data *image_obj, t_vec2 pos, int color, int size);
 void		clear_frame(t_scene *scene);
 void		render(t_scene *scene);
 void		render_player(t_scene *scene);
@@ -225,4 +234,10 @@ t_ray		dda(t_scene *scene, double dir_x, double dir_y);
 t_ray		init_ray(t_scene *scene, double dir_x, double dir_y);
 void		draw_wall(t_scene *scene, t_ray ray, int x);
 void		render(t_scene *scene);
+
+// Bonus Functions
+int			game_loop_bonus(t_scene *scene);
+void		render_map_hud(t_scene *scene);
+void		render_hud(t_scene *scene);
+void		render_grid_map(t_scene *scene, int map_w, int map_h);
 #endif

@@ -6,23 +6,27 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 21:35:52 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 16:43:23 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/15 20:42:35 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	draw_tile(t_data *image_obj, int y, int x, int color)
+void	draw_tile(t_data *image_obj, t_vec2 pos, int color, int size)
 {
 	int	i;
 	int	j;
+	int	offset;
 
-	i = y;
-	j = x;
-	while (i <= y + 16)
+	offset = 0;
+	if (size < 32)
+		offset = (32 - size) / 2;
+	i = pos.y + offset;
+	j = pos.x + offset;
+	while (i <= pos.y + size + offset)
 	{
-		j = x;
-		while (j <= x + 16)
+		j = pos.x + offset;
+		while (j <= pos.x + size + offset)
 		{
 			draw_pixel(image_obj, j, i, color);
 			j++;

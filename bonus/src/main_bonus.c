@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/25 16:10:08 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/07 13:27:26 by csilva-s         ###   ########.fr       */
+/*   Created: 2026/11/14 20:15:03 by csilva-s          #+#    #+#             */
+/*   Updated: 2026/11/14 22:47:17 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	draw_player(t_data *image_obj, int y, int x, int color)
+int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	t_scene	*scene;
 
-	i = y;
-	j = x;
-	while (i <= y + 8)
+	if (argc != 2)
+		return (1);
+	scene = parser(argv[1]);
+	if (!scene)
 	{
-		j = x;
-		while (j <= x + 8)
-		{
-			draw_pixel(image_obj, j, i, color);
-			j++;
-		}
-		i++;
+		scene = NULL;
+		printf("Cub3D: Finishing program.\n");
+		return (FAILED);
 	}
-}
-
-void	render_player(t_scene *scene)
-{
-	int	x;
-	int	y;
-
-	x = floor(scene->camera.pos_x * 16);
-	y = floor(scene->camera.pos_y * 16);
-	draw_player(scene->image_obj, y, x, RED);
+	graphic_config(&scene);
+	key_handler(scene);
+	scene->last_time_render = get_time();
+	mlx_loop_hook(scene->mlx_instance, game_loop_bonus, scene);
+	mlx_loop(scene->mlx_instance);
+	exit_scene(scene);
+	return (0);
 }

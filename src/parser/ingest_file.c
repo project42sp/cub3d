@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 23:14:20 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/07 00:52:26 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 18:46:25 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,24 @@ char	**ingest_file(char *argv, t_map_size map_size)
 		return (NULL);
 	printf("Cub3D: Finish clean ingestion.\n");
 	return (data);
+}
+
+t_color	init_color(char *rgb)
+{
+	t_color	color;
+	char	**split;
+
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+	color.hex = 0;
+	split = ft_split(rgb, ',');
+	if (!split)
+		return (color);
+	color.r = ft_atoi(split[0]);
+	color.g = ft_atoi(split[1]);
+	color.b = ft_atoi(split[2]);
+	color.hex = (color.r << 16) | (color.g << 8) | color.b;
+	ft_split_free(split, 3);
+	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 19:45:49 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/08 20:26:28 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:43:15 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	**map_copy(char **org, t_map_size len)
 static int	flood_fill(char **map, int column, int line, t_map_size len)
 {
 	if (line >= len.map_size || column >= (int)ft_strlen(map[line])
-		|| line == 0 || column == 0)
+		|| line < 0 || column < 0)
 	{
 		printf("Cub3D: Open path on map: Coord[%02d][%02d]\n", line, column);
 		return (FALSE);
@@ -71,7 +71,7 @@ char	**extract_map(char **data, t_map_size len)
 	len.line_start = 6;
 	while (len.index < len.map_size)
 	{
-		map[len.index] = data[len.line_start];
+		map[len.index] = ft_strdup(data[len.line_start]);
 		len.line_start++;
 		len.index++;
 	}

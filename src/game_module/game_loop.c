@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 00:31:34 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/08 19:01:36 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/09 21:32:14 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	check_camera_char(char camera)
 {
-	if (camera == 'L')
+	if (camera == 'N')
+		return (1);
+	else if (camera == 'S')
 		return (1);
 	else if (camera == 'E')
 		return (1);
-	else if (camera == 'N')
-		return (1);
-	else if (camera == 'S')
+	else if (camera == 'W')
 		return (1);
 	return (0);
 }
