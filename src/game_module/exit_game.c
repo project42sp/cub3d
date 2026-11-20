@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 01:29:04 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 16:29:59 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/20 17:12:35 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ int	exit_scene(t_scene *scene)
 	free(scene->so);
 	free(scene->we);
 	free(scene->no);
+	if (scene->texture)
+	{
+		mlx_destroy_image(scene->mlx_instance, scene->texture->ea->img);
+		mlx_destroy_image(scene->mlx_instance, scene->texture->no->img);
+		mlx_destroy_image(scene->mlx_instance, scene->texture->so->img);
+		mlx_destroy_image(scene->mlx_instance, scene->texture->we->img);
+		free(scene->texture->ea);
+		free(scene->texture->no);
+		free(scene->texture->we);
+		free(scene->texture->so);
+		free(scene->texture);
+	}
 	mlx_destroy_image(scene->mlx_instance, scene->image_obj->img);
 	mlx_clear_window(scene->mlx_instance, scene->win);
 	mlx_destroy_display(scene->mlx_instance);
