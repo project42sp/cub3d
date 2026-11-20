@@ -6,12 +6,37 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 23:37:13 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/15 23:55:43 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+unsigned int	my_mlx_pixel_get(t_data *img, int x, int y)
+{
+	char	*src;
+
+	if (x > img->width || y > img->height)
+		return (0);
+	if (x < 0 || y < 0)
+		return (0);
+	src = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(unsigned int *)src);
+}
+
+void	print_wall(int start, int end, t_scene *scene, int x)
+{
+	unsigned int	pixel;
+
+	while (start != end)
+	{
+		pixel = my_mlx_pixel_get(scene->texture->no, x, start);
+		if (pixel == 0)
+			break ;
+		draw_pixel(scene->image_obj, x, start, pixel);
+		start++;
+	}
+}
 //ISSUE: Change the wall, ceil and floor color.
 void	draw_wall(t_scene *scene, t_ray ray, int x)
 {
@@ -33,11 +58,7 @@ void	draw_wall(t_scene *scene, t_ray ray, int x)
 	i = end;
 	while (i < HEIGHT)
 		draw_pixel(scene->image_obj, x, i++, scene->floor.hex);
-	i = 0;
-	while (start < end)
-	{
-		
-	}
+	print_wall(start, end, scene, x);
 }
 
 t_pos	init_side_dist(t_scene *scene, t_ray ray)

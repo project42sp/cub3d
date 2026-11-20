@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 23:30:01 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/15 23:33:13 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 // CONFIG VARS
 # define HEIGHT 768
-# define WIDTH 1280
+# define WIDTH 1366
 
 // COLORS
 # define RED 0x00FF0000
@@ -146,6 +146,14 @@ typedef struct s_ray
 	int		hit;
 }	t_ray;
 
+typedef struct	s_texture
+{
+	t_data	*no;
+	t_data	*so;
+	t_data	*ea;
+	t_data	*we;
+}	t_texture;
+
 typedef struct s_scene
 {
 	t_color		floor;
@@ -190,6 +198,10 @@ char		**ingest_file(char *argv, t_map_size map_size);
 // map_validation.c
 int			invalid_map(char **data, t_map_size len);
 t_camera	get_player_coord(char **map);
+
+// parser_map_ingestion
+void	init_texture(t_scene *scene, t_texture **tex);
+void	free_texture(t_texture **tex);
 
 // flood_fill.c
 int			invalid_wall_check(char **map, t_map_size len, t_camera cam);
