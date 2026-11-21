@@ -3,4 +3,5 @@ obj/
 *.o
 build/
 *.swp
+maps/map.no_permission.cub
 
