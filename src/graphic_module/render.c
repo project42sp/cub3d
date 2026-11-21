@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/21 01:49:55 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/21 01:59:54 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	print_wall(t_scene *scene, t_ray ray, int x)
 		wall_x = scene->camera.pos_x + ray.perp_dist * ray.dir.x;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)tex->width);
+	if ((ray.side == 0 && ray.dir.x < 0) || (ray.side == 1 && ray.dir.y > 0))
+		tex_x = tex->width - tex_x - 1;
 
 	if (start < 0)
 		start = 0;
