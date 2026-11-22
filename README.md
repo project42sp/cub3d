@@ -4,7 +4,7 @@
 
 ## Description
 This project aims to create a "realistic" 3D graphical representation of the inside of a maze from a first-person perspective.
-This project was created using the ray-casting principles used in several early games like Wolfenstein 3D.
+This project was created using the ray-casting techniques used in several early games like Wolfenstein 3D.
 
 
 ## Instructions
