@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 00:22:50 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/07 01:04:07 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/22 18:12:49 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	invalid_rgb(char *rgb)
 	len = 0;
 	while (colors[len])
 		len++;
-	if (len > 3)
+	if (len != 3)
 	{
-		printf("Error: Found more than 3 values for RGB.\n");
+		printf("Error: Expected 3 color values for RGB.\n");
 		ft_split_free(colors, len);
 		return (FAILED);
 	}

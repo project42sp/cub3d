@@ -6,7 +6,7 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 01:13:27 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/09 18:53:25 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/22 18:47:35 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	player_check(char value, t_camera *cam, int line, int column)
 		{
 			cam->pos_x = 0;
 			cam->pos_y = 0;
-			printf("Map Error: More than one PLayer.\n");
+			printf("Error: More than one PLayer.\n");
 			return (FAILED);
 		}
 		cam->pos_x = column;
@@ -59,7 +59,9 @@ static int	player_check(char value, t_camera *cam, int line, int column)
 	}
 	if (!ft_strchr("NWSE01", value) && !ft_isspace(value))
 	{
-		printf("Map Error: Invalid character found: '%c'\n", value);
+		cam->pos_x = 0;
+		cam->pos_y = 0;
+		printf("Error: Invalid character found: '%c'\n", value);
 		return (FAILED);
 	}
 	return (SUCESS);
@@ -88,6 +90,8 @@ t_camera	get_player_coord(char **map)
 		}
 		line++;
 	}
+	if (cam.pos_x == 0 && cam.pos_y == 0)
+		printf("Error: No player position found\n");
 	return (cam);
 }
 
