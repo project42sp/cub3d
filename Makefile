@@ -7,25 +7,25 @@ CFLAGS	= -Wall -Wextra -Werror -g3 -std=c99
 LIBFT_DIR = includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-
-SRC_FILES	= parser/parser.c	\
-						parser/parser_utils.c	\
-						parser/invalid_name.c	\
-						parser/map_validation.c	\
-						parser/flood_fill.c			\
-						parser/ingest_file.c		\
-						parser/map_size_check.c		\
-						parser/parameter_check.c	\
-						parser/content_validation.c	\
-						input_module/key_handler.c	\
-						input_module/key_register.c \
-						input_module/key_action.c		\
-						game_module/exit_game.c			\
-						game_module/game_loop.c			\
-						graphic_module/graphic_config.c \
-						graphic_module/render_direction.c \
-						graphic_module/draw_functions.c \
-						graphic_module/render.c
+SRC_FILES	=	parser/parser.c	\
+				parser/parser_utils.c	\
+				parser/invalid_name.c	\
+				parser/map_validation.c	\
+				parser/map_ingestion.c \
+				parser/flood_fill.c			\
+				parser/ingest_file.c		\
+				parser/map_size_check.c		\
+				parser/parameter_check.c	\
+				parser/content_validation.c	\
+				input_module/key_handler.c	\
+				input_module/key_register.c \
+				input_module/key_action.c		\
+				game_module/exit_game.c			\
+				game_module/game_loop.c			\
+				graphic_module/graphic_config.c \
+				graphic_module/render_wall.c \
+				graphic_module/draw_functions.c \
+				graphic_module/render.c
 
 SRC_ENTRY_FILE = main.c
 SRC_DIR = src
@@ -33,9 +33,9 @@ SRCS	= $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 				$(addprefix $(SRC_DIR)/, $(SRC_ENTRY_FILE))
 
 BONUS_FILES = main_bonus.c \
-							game_loop_bonus.c \
-							hud_module/minimap/render_map_hud.c \
-							hud_module/render_hud.c
+			game_loop_bonus.c \
+			hud_module/minimap/render_map_hud.c \
+			hud_module/render_hud.c
 
 BONUS_SRC = bonus/src
 BONUS_SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES)) \

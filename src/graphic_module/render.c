@@ -6,40 +6,11 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:06:40 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/15 22:45:57 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/22 17:39:52 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-//ISSUE: Change the wall, ceil and floor color.
-void	draw_wall(t_scene *scene, t_ray ray, int x)
-{
-	int	start;
-	int	end;
-	int	wall_height;
-	int	i;
-
-	wall_height = (int)(HEIGHT / ray.perp_dist);
-	start = -wall_height / 2 + HEIGHT / 2;
-	end = wall_height / 2 + HEIGHT / 2;
-	i = 0;
-	if (start < 0)
-		start = 0;
-	if (end >= HEIGHT)
-		end = HEIGHT - 1;
-	while (i < start)
-		draw_pixel(scene->image_obj, x, i++, scene->ceil.hex);
-	i = end;
-	while (i < HEIGHT)
-		draw_pixel(scene->image_obj, x, i++, scene->floor.hex);
-	while (start != end)
-	{
-		draw_pixel(scene->image_obj, x,
-			start, scene->floor.hex / ray.perp_dist);
-		start++;
-	}
-}
 
 t_pos	init_side_dist(t_scene *scene, t_ray ray)
 {
@@ -129,7 +100,7 @@ void	render(t_scene *scene)
 		camera_x = 2.0 * x / (double)WIDTH - 1.0;
 		ray_dir_x = scene->camera.dir_x + scene->camera.plane_x * camera_x;
 		ray_dir_y = scene->camera.dir_y + scene->camera.plane_y * camera_x;
-		draw_wall(scene, dda(scene, ray_dir_x, ray_dir_y), x);
+		draw_img(scene, dda(scene, ray_dir_x, ray_dir_y), x);
 		x++;
 	}
 }

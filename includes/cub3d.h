@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:21:56 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/15 20:21:51 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/22 17:36:37 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -150,6 +152,25 @@ typedef struct s_ray
 	int		hit;
 }	t_ray;
 
+typedef struct s_texture
+{
+	t_data	*no;
+	t_data	*so;
+	t_data	*ea;
+	t_data	*we;
+}	t_texture;
+
+typedef struct s_drawall
+{
+	double			step;
+	double			x;
+	unsigned int	color;
+	int				height;
+	int				start;
+	int				end;
+	int				texture_x;
+}				t_drawall;
+
 typedef struct s_scene
 {
 	t_color		floor;
@@ -163,6 +184,7 @@ typedef struct s_scene
 	void		*win;
 	void		*mlx_instance;
 	t_data		*image_obj;
+	t_texture	*texture;
 	t_input		inputs;
 	long		last_time_render;
 }	t_scene;
@@ -193,6 +215,10 @@ char		**ingest_file(char *argv, t_map_size map_size);
 // map_validation.c
 int			invalid_map(char **data, t_map_size len);
 t_camera	get_player_coord(char **map);
+
+// parser_map_ingestion
+void		init_texture(t_scene *scene, t_texture **tex);
+void		free_texture(t_texture **tex);
 
 // flood_fill.c
 int			invalid_wall_check(char **map, t_map_size len, t_camera cam);
@@ -232,7 +258,7 @@ void		bresengam(t_pos init_pos, t_pos end_pos,
 				t_pos delta, t_scene *scene);
 t_ray		dda(t_scene *scene, double dir_x, double dir_y);
 t_ray		init_ray(t_scene *scene, double dir_x, double dir_y);
-void		draw_wall(t_scene *scene, t_ray ray, int x);
+void		draw_img(t_scene *scene, t_ray ray, int x);
 void		render(t_scene *scene);
 
 // Bonus Functions

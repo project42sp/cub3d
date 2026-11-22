@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 16:12:37 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/11/09 18:42:14 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/11/22 17:38:57 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 void	graphic_config(t_scene **scene)
 {
 	(*scene)->mlx_instance = mlx_init();
+	(*scene)->texture = ft_calloc(sizeof(t_texture), 1);
+	init_texture(*scene, &(*scene)->texture);
+	if (!(*scene)->texture)
+		exit_scene(*scene);
 	(*scene)->win = mlx_new_window((*scene)->mlx_instance, WIDTH, HEIGHT,
 			"Windows 98 Screensaver\n");
 	(*scene)->image_obj = ft_calloc(1, sizeof(t_data));
 	(*scene)->image_obj->img = mlx_new_image((*scene)->mlx_instance,
 			WIDTH, HEIGHT);
 	if (!(*scene)->image_obj->img)
-	{
 		exit_scene(*scene);
-	}
 	(*scene)->image_obj->addr = mlx_get_data_addr((*scene)->image_obj->img,
 			&(*scene)->image_obj->bits_per_pixel,
 			&(*scene)->image_obj->line_length,
