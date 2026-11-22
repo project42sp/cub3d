@@ -51,7 +51,10 @@ MLX = $(MLX_DIR)/libmlx.a
 
 # ------------ RECIPES ---------------
 
-all : $(MLX) $(NAME)
+all : gitsubmodules  $(MLX) $(NAME)
+
+gitsubmodules :
+	@git submodule update --init --recursive
 
 bonus : $(MLX) $(NAME_BONUS)
 
