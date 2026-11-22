@@ -24,6 +24,7 @@ SRC_FILES	=	main.c	\
 				game_module/game_loop.c			\
 				graphic_module/graphic_config.c \
 				graphic_module/render_map.c \
+				graphic_module/render_wall.c \
 				graphic_module/render_player.c \
 				graphic_module/render_direction.c \
 				graphic_module/draw_functions.c \

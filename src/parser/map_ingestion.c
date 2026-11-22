@@ -6,11 +6,11 @@
 /*   By: buehara <buehara@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 23:50:05 by buehara           #+#    #+#             */
-/*   Updated: 2026/11/15 11:36:51 by buehara          ###   ########.fr       */
+/*   Updated: 2026/11/22 17:32:29 by buehara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	free_texture(t_texture **tex)
 {
